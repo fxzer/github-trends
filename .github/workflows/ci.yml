@@ -1,0 +1,43 @@
+name: Build & Deploy
+on:
+  push:
+    # branches:
+    #   - master
+    tags:
+      - v*
+  schedule:
+    # 每天 6:00 和 18:00  触发工作流程
+    - cron: '0 6,18 * * *'
+
+jobs:
+  build-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 18
+          registry-url: 'https://registry.npmjs.org'
+      - run: npm install
+      - run: npm run get
+
+      - name: Modify README.md
+        uses: jaywcjlove/github-action-modify-file-content@main
+        with:
+          path: README.md
+          body: '{{date:YYYY-MM-DD HH:mm:ss}}'
+
+      - name: Build 🔧
+        run: |
+          npm
+          npm run build
+          npm run generate
+          ls -lrth
+
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.DEPLOY_TOKEN }}
+          publish_dir: ./.output/public
+          user_name: github-actions[bot]
+          user_email: github-actions[bot]@users.noreply.github.com

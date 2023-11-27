@@ -29,7 +29,7 @@ export const LANGUAGE_LIST = [
 ] as const
 export type Language = typeof LANGUAGE_LIST[number]
 
-export type Repo  = {
+export interface Repo {
   title: string
   path: string
   owner: string
@@ -46,4 +46,4 @@ export const langColors = {
   JavaScript: '#e5b12d',
   TypeScript: '#1D74C1',
   Vue: '#44C089',
-} 
+}

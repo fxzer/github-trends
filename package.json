@@ -57,7 +57,6 @@
     "unplugin-vue-components": "^0.25.2"
   },
   "simple-git-hooks": {
-    "pre-commit": "pnpm lintf",
-    "commit-msg": "pnpm run commitlint"
+    "pre-commit": "pnpm lintf"
   }
 }

@@ -5,7 +5,6 @@ import type { DateRange, Language } from '../utils'
 import { DATE_RANGE_LIST, LANGUAGE_LIST } from '../utils'
 import { saveData } from './saveData'
 
-
 export async function getTrendData() {
   const allTrends: any = {}
   for (const lang of LANGUAGE_LIST) {

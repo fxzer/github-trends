@@ -18,7 +18,7 @@ defineProps<{
     </div>
     <div class="flex-1">
       <div>
-        <div :style="{color}">
+        <div :style="{ color }">
           <a :href="repo.link" target="_blank" class="text-2xl">{{ repo.owner }}</a>
           <a :href="repo.link" target="_blank" class="text-2xl">{{ repo.name }}</a>
         </div>
