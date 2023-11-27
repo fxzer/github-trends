@@ -21,8 +21,11 @@ jobs:
         with:
           node-version: 18
           registry-url: 'https://registry.npmjs.org'
-      - run: npm install
-      - run: npm run get
+
+      - uses: pnpm/action-setup@v2
+        with:
+          version: 8
+          run_install: true
 
       - name: Modify README.md
         uses: jaywcjlove/github-action-modify-file-content@main
@@ -32,9 +35,9 @@ jobs:
 
       - name: Build 🔧
         run: |
-          npm
-          npm run build
-          npm run generate
+          pnpm run get
+          pnpm run build
+          pnpm run generate
           ls -lrth
 
       - name: Deploy
