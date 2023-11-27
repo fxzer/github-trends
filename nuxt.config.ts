@@ -27,6 +27,7 @@ export default defineNuxtConfig({
     },
   },
   app: {
+    baseURL: '/github-trends/',
     head: {
       title: 'github-trends',
       meta: [
