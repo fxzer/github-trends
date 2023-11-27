@@ -12,9 +12,15 @@ export async function getTrendData() {
       const html = await getTrendsHtml(lang, range.value)
       const trends = await parseTrendsHtml(html.data)
       allTrends[`${lang}-${range.value}`] = trends
-      await saveData(allTrends, 'trending', `index.js`)
     }
   }
+  try {
+    await saveData(allTrends, 'trending', `index.js`)
+  }
+  catch (error) {
+    console.log('爬取失败：', error.message)
+  }
+  console.log('===> 爬取成功! <===')
 }
 
 async function getTrendsHtml(language: Language, dateRange: DateRange) {
