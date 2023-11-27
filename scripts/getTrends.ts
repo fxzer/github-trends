@@ -1,48 +1,55 @@
-import url from 'node:url'
+import axios from 'axios'
 import { load } from 'cheerio'
-import fetch from 'node-fetch'
 
-export function getTrendingData(type = 'daily') {
-  const apiUrl = `https://github.com/trending/javascript?since=${type}`
-  return fetch(apiUrl)
-    .then(res => res.arrayBuffer())
-    .then((buf) => {
-      const resultData = []
-      const enc = new TextDecoder('utf-8')
-      const html = enc.decode(buf)
-      const $ = load(html)
-      $('.Box-row').each((idx, item) => {
-        const fullName = $(item).find('h2 a').text().replace(/(\n|\s)/g, '')
-        const href = $(item).find('h2 a').attr('href')?.replace(/(\n|\s)/g, '')
-        const language = $(item).find('span[itemprop=programmingLanguage]').text().replace(/(\n|\s)/g, '')
-        const languageColor = $(item).find('span.repo-language-color')
-        const todayStar = $(item).find('span.float-sm-right').text().replace(/(\n|,)/g, '').trim()
-        const description = $(item).find('p.color-fg-muted').text().replace(/(\n)/g, '').trim()
-        if (!fullName)
-          throw new Error(`${apiUrl}: fullName is null`)
+import type { DateRange, Language } from '../utils'
+import { DATE_RANGE_LIST, LANGUAGE_LIST } from '../utils'
+import { saveData } from './saveData'
 
-        if (!href)
-          throw new Error(`${apiUrl}\n\n${fullName}: href is null`)
 
-        if (!todayStar)
-          throw new Error(`${apiUrl}\n\n${fullName}: todayStar is null`)
+export async function getTrendData() {
+  const allTrends: any = {}
+  for (const lang of LANGUAGE_LIST) {
+    for (const range of DATE_RANGE_LIST) {
+      const html = await getTrendsHtml(lang, range.value)
+      const trends = await parseTrendsHtml(html.data)
+      allTrends[`${lang}-${range.value}`] = trends
+      await saveData(allTrends, 'trending', `index.js`)
+    }
+  }
+}
 
-        let color = ''
-        if (language && languageColor && languageColor.css)
-          color = languageColor.css('background-color')
+async function getTrendsHtml(language: Language, dateRange: DateRange) {
+  const apiUrl = `https://github.com/trending/${language}?since=${dateRange}`
+  return axios.get(apiUrl)
+}
 
-        let stargazersCount = ''
-        let node = $(item).find('svg[aria-label="star"].octicon.octicon-star')
-        if (node && node[0] && node[0].next)
-          stargazersCount = node[0].next?.data?.replace(/(\n|\s|,)/g, '') || ''
-
-        let forked = '-'
-        node = $(item).find('svg[aria-label="fork"].octicon.octicon-repo-forked')
-        if (node)
-          forked = node[0].next?.data?.replace(/(\n|\s|,)/g, '') || ''
-
-        resultData.push({ full_name: fullName, language, color, description, forked, stargazers_count: Number.parseInt(stargazersCount, 10), todayStar, html_url: url.URL(apiUrl, href), rank: idx + 1 })
-      })
-      return resultData
+function parseTrendsHtml(html: string) {
+  const trends: any = []
+  const $ = load(html)
+  $('.Box article.Box-row').each((i, el) => {
+    const title = $(el).find('.h3 a').text().trim()
+    const owner = $(el).find('.h3.lh-condensed a .text-normal').text().trim()
+    const name = $(el).find('.h3.lh-condensed a').text().split('/')[1].trim()
+    const path = $(el).find('.h3 a').attr('href')
+    const link = path ? `https://github.com${path}` : ''
+    const desciption = $(el).find('p.col-9.color-fg-muted.my-1.pr-4').text().trim()
+    const language = $(el).find('[itemprop=programmingLanguage]').text().trim() || ''
+    // const languageBgColor = $(el).find('.repo-language-color').attr('style')
+    const stars = $(el).find('a[href*="stargazers"]').text().trim()
+    const forks = $(el).find('a[href*="forks"]').text().trim()
+    const starup = $(el).find('.float-sm-right').text().trim().split(' ')[0]
+    trends.push({
+      title,
+      owner,
+      name,
+      path,
+      link,
+      desciption,
+      language,
+      stars,
+      forks,
+      starup,
     })
+  })
+  return trends
 }

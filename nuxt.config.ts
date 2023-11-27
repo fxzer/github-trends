@@ -8,14 +8,18 @@ export default defineNuxtConfig({
   modules: [
     '@unocss/nuxt',
     '@vueuse/nuxt',
+    'nuxt-icon',
+    '@element-plus/nuxt',
   ],
+  elementPlus: {
+  },
   postcss: {
     plugins: {
       autoprefixer: {}, // 自动添加前缀
       cssnano: {},
     },
   },
-  css: ['assets/style/main.scss'],
+  css: ['assets/styles/main.scss'],
   nitro: {
     prerender: {
       crawlLinks: true,

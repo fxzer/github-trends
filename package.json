@@ -9,6 +9,7 @@
   "scripts": {
     "dev": "nuxt dev",
     "test": "vitest",
+    "get": "esno ./scripts/index.ts",
     "build": "nuxt build",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
@@ -18,21 +19,23 @@
     "preinstall": "npx only-allow pnpm",
     "prepare": "simple-git-hooks",
     "release": "standard-version",
-    "clean:cache": "rimraf node_modules && rimraf .eslintcache && pnpm install"
+    "clean:cache": "rimraf .eslintcache && rimraf node_modules && pnpm install"
   },
   "dependencies": {
-    "@nuxt-alt/proxy": "^2.4.2",
+    "@nuxt-alt/proxy": "^2.4.7",
     "@nuxtjs/robots": "^3.0.0",
     "@unocss/reset": "^0.51.13",
     "axios": "^1.6.2",
+    "dayjs": "^1.11.10",
     "sass": "^1.69.5"
   },
   "devDependencies": {
-    "@antfu/eslint-config": "^0.39.8",
-    "@nuxt/devtools": "^0.4.6",
+    "@antfu/eslint-config": "^2.1.0",
+    "@element-plus/nuxt": "^1.0.7",
+    "@nuxt/devtools": "^1.0.3",
     "@types/fs-extra": "^11.0.4",
-    "@types/node": "^18.18.12",
-    "@unocss/eslint-config": "^0.56.5",
+    "@types/node": "^18.18.13",
+    "@unocss/eslint-config": "^0.57.7",
     "@unocss/nuxt": "^0.51.13",
     "@unocss/preset-rem-to-px": "^0.51.13",
     "@vueuse/core": "^10.6.1",
@@ -40,15 +43,18 @@
     "autoprefixer": "^10.4.16",
     "cheerio": "1.0.0-rc.12",
     "cssnano": "^6.0.1",
+    "element-plus": "^2.4.2",
     "esno": "^4.0.0",
     "lint-staged": "^15.1.0",
     "node-fetch": "^3.3.2",
     "nuxt": "^3.8.2",
+    "nuxt-icon": "^0.6.6",
     "postcss": "^8.4.31",
+    "rimraf": "^5.0.5",
     "simple-git-hooks": "^2.9.0",
     "standard-version": "^9.5.0",
-    "unplugin-auto-import": "^0.15.3",
-    "unplugin-vue-components": "^0.24.1"
+    "unplugin-auto-import": "^0.17.1",
+    "unplugin-vue-components": "^0.25.2"
   },
   "simple-git-hooks": {
     "pre-commit": "pnpm lintf",

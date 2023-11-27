@@ -1,3 +1,3 @@
-import { getTrendingData } from './getTrends'
+import { getTrendData } from './getTrends'
 
-console.log('[ getTrendingData ]-2', getTrendingData)
+await getTrendData()

@@ -1,6 +1,13 @@
+<script>
+import Header from '@/components/Header.vue'
+</script>
+
 <template>
-  <div class="wh-screen flex-center">
-    <slot />
+  <div class="mx-auto">
+    <Header />
+    <div class="flex-center">
+      <slot />
+    </div>
   </div>
 </template>
 
