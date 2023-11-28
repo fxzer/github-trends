@@ -12,6 +12,13 @@ const chartOptions = ref<any>({
   },
   tooltip: {},
   xAxis: {
+    // 分隔线
+    splitLine: {
+      //颜色
+      lineStyle: {
+        color: '#99999970',
+      },
+    },
     type: 'value',
     boundaryGap: [0, 0.01],
   },

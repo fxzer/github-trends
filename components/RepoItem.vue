@@ -42,7 +42,7 @@ defineProps<{
       :max-scale="4"
       :min-scale="0.5"
       :preview-src-list="[`https://starchart.cc${repo.path}.svg`]"
-      :initial-index="4"
+      :initial-index="40"
       fit="cover"
     />
   </div>
