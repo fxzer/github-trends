@@ -5,7 +5,7 @@ import { deepClone, strToNumber } from '../utils'
 const props = defineProps<{
   data: any[]
 }>()
-const { data: currentData } = toRefs(props)
+const { data } = toRefs(props)
 const chartOptions = ref<any>({
   title: {
     text: '排行榜',
@@ -30,6 +30,7 @@ const chartOptions = ref<any>({
       emphasis: {
         focus: 'series',
       },
+      // data: stars,
     },
     {
       name: 'forks',
@@ -41,6 +42,7 @@ const chartOptions = ref<any>({
       emphasis: {
         focus: 'series',
       },
+      // data: forks,
     },
     {
       name: 'starup',
@@ -52,12 +54,13 @@ const chartOptions = ref<any>({
       emphasis: {
         focus: 'series',
       },
+      // data: starup,
     },
   ],
 })
+const dataCopy = deepClone(props.data)
 let chart: any
 function draw(data: Repo[], isUpdate = false) {
-  const dataCopy = deepClone(data)
   isUpdate ? chart.clear() : (chart = echarts.init(document.getElementById('main') as HTMLDivElement))
   const stars: number[] = []
   const forks: number[] = []
@@ -81,10 +84,12 @@ function draw(data: Repo[], isUpdate = false) {
   chart.setOption(chartOptions.value, isUpdate ? { replaceMerge: ['xAxis', 'yAxis', 'series'] } : {})
 }
 onMounted(() => {
-  draw(currentData.value)
+  draw(data.value)
+  // chart.setOption(chartOptions.value)
 })
-watch(currentData, () => {
-  draw(currentData.value, true)
+watch(data, () => {
+  draw(data.value, true)
+  // chart.setOption(chartOptions.value, { replaceMerge: ['xAxis', 'yAxis', 'series'] })
 }, { deep: true })
 </script>
 
