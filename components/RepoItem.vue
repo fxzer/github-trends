@@ -33,7 +33,6 @@ defineProps<{
         <span class="text-red-500">{{ repo.starup }}</span>
       </div>
     </div>
-    <!-- <img src="https://starchart.cc/fanmingming/live.svg" alt="" class="wh-full"> -->
     <el-image
       lazy
       class="h-20 w-50"

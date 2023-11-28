@@ -8,7 +8,7 @@ const props = defineProps<{
 const { data: currentData } = toRefs(props)
 const chartOptions = ref<any>({
   title: {
-    text: 'Star/Fork/Starup总和排行榜',
+    text: 'Star飙升榜',
     left: 'center',
   },
   grid: {
@@ -34,44 +34,21 @@ const chartOptions = ref<any>({
     type: 'category',
     data: [],
   },
+
   series: [
-    {
-      name: 'stars',
-      type: 'bar',
-      stack: 'total',
-      // 颜色
-      itemStyle: {
-        color: '#9FE080',
-      },
-      label: {
-        show: true,
-      },
-      emphasis: {
-        focus: 'series',
-      },
-    },
-    {
-      name: 'forks',
-      type: 'bar',
-      stack: 'total',
-      label: {
-        show: true,
-      },
-      itemStyle: {
-        color: '#F9C858',
-      },
-      emphasis: {
-        focus: 'series',
-      },
-    },
     {
       name: 'starup',
       type: 'bar',
-      stack: 'total',
+      showBackground: true,
       itemStyle: {
-        color: '#EE6666',
+        color: new echarts.graphic.LinearGradient(0, 0, 1, 0, [
+          { offset: 0, color: '#83bff6' },
+          { offset: 0.5, color: '#188df0' },
+          { offset: 1, color: '#188df0' },
+        ]),
       },
       label: {
+        color: '#fff',
         show: true,
       },
       emphasis: {
@@ -83,26 +60,16 @@ const chartOptions = ref<any>({
 let chart: any
 function draw(data: Repo[], isUpdate = false) {
   const dataCopy = deepClone(data)
-  isUpdate ? chart.clear() : (chart = echarts.init(document.getElementById('main') as HTMLDivElement))
-  const stars: number[] = []
-  const forks: number[] = []
+  isUpdate ? chart.clear() : (chart = echarts.init(document.getElementById('main-starup') as HTMLDivElement))
   const starup: number[] = []
   const names: string[] = []
-  dataCopy.sort((a: Repo, b: Repo) => {
-    const acount = strToNumber(a.starup) + strToNumber(a.stars) + strToNumber(a.forks)
-    const bcount = strToNumber(b.starup) + strToNumber(b.stars) + strToNumber(b.forks)
-    return acount - bcount
-  })
+  dataCopy.sort((a: Repo, b: Repo) => strToNumber(a.starup) - strToNumber(b.starup))
   dataCopy.forEach((item: Repo) => {
-    stars.push(strToNumber(item.stars))
-    forks.push(strToNumber(item.forks))
     starup.push(strToNumber(item.starup))
     names.push(`${item.owner}${item.name}`)
   })
   chartOptions.value.yAxis.data = names
-  chartOptions.value.series[0].data = stars
-  chartOptions.value.series[1].data = forks
-  chartOptions.value.series[2].data = starup
+  chartOptions.value.series[0].data = starup
   chart.setOption(chartOptions.value, isUpdate ? { replaceMerge: ['xAxis', 'yAxis', 'series'] } : {})
 }
 onMounted(() => {
@@ -114,7 +81,7 @@ watch(currentData, () => {
 </script>
 
 <template>
-  <div id="main" class="h-300 w-330" />
+  <div id="main-starup" class="h-300 w-330" />
 </template>
 
 <style scoped lang='scss'>

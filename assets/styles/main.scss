@@ -1,4 +1,7 @@
 @import '@unocss/reset/tailwind-compat.css';
+html.dark{
+  background: #000;
+}
 * {
   outline: none;
   box-sizing: border-box;

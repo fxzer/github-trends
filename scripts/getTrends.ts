@@ -14,13 +14,7 @@ export async function getTrendData() {
       allTrends[`${lang}-${range.value}`] = trends
     }
   }
-  try {
-    await saveData(allTrends, 'trending', `index.js`)
-  }
-  catch (error) {
-    console.log('爬取失败：', error.message)
-  }
-  console.log('===> 爬取成功! <===')
+  await saveData(allTrends, `trending.js`)
 }
 
 async function getTrendsHtml(language: Language, dateRange: DateRange) {
@@ -37,7 +31,7 @@ function parseTrendsHtml(html: string) {
     const name = $(el).find('.h3.lh-condensed a').text().split('/')[1].trim()
     const path = $(el).find('.h3 a').attr('href')
     const link = path ? `https://github.com${path}` : ''
-    const desciption = $(el).find('p.col-9.color-fg-muted.my-1.pr-4').text().trim()
+    const description = $(el).find('p.col-9.color-fg-muted.my-1.pr-4').text().trim()
     const language = $(el).find('[itemprop=programmingLanguage]').text().trim() || ''
     // const languageBgColor = $(el).find('.repo-language-color').attr('style')
     const stars = $(el).find('a[href*="stargazers"]').text().trim()
@@ -49,7 +43,7 @@ function parseTrendsHtml(html: string) {
       name,
       path,
       link,
-      desciption,
+      description,
       language,
       stars,
       forks,
