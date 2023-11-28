@@ -24,6 +24,10 @@ const chartOptions = ref<any>({
       name: 'stars',
       type: 'bar',
       stack: 'total',
+      // 颜色
+      itemStyle: {
+        color: '#9FE080',
+      },
       label: {
         show: true,
       },
@@ -38,6 +42,9 @@ const chartOptions = ref<any>({
       label: {
         show: true,
       },
+      itemStyle: {
+        color: '#F9C858',
+      },
       emphasis: {
         focus: 'series',
       },
@@ -46,6 +53,9 @@ const chartOptions = ref<any>({
       name: 'starup',
       type: 'bar',
       stack: 'total',
+      itemStyle: {
+        color: '#EE6666',
+      },
       label: {
         show: true,
       },
