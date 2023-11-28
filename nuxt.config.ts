@@ -1,3 +1,5 @@
+// eslint-disable-next-line node/prefer-global/process
+const isVercel = process.argv.includes('--vercel')
 export default defineNuxtConfig({
   experimental: {
     payloadExtraction: false,
@@ -27,7 +29,7 @@ export default defineNuxtConfig({
     },
   },
   app: {
-    baseURL: '/github-trends/',
+    baseURL: isVercel ? '/' : '/github-trends/', /* 根据 */
     head: {
       title: 'github-trends',
       meta: [

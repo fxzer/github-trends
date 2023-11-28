@@ -6,10 +6,7 @@ on:
     paths-ignore: # 下列文件的变更不触发部署
       - LICENSE
       - README.md
-    tags:
-      - v*
   schedule:
-    # 每天 6:00 和 18:00  触发工作流程
     - cron: '0 6,18 * * *'
 
 jobs:

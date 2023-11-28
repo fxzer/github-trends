@@ -12,6 +12,7 @@
     "get": "esno ./scripts/index.ts",
     "build": "nuxt build",
     "generate": "nuxt generate",
+    "vercel": "nuxt build && nuxt generate --vercel",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare",
     "lint": "eslint .",
