@@ -19,7 +19,7 @@ defineProps<{
     <div class="flex-1">
       <div>
         <div :style="{ color }">
-          <a :href="repo.link" target="_blank" class="text-2xl">{{ repo.owner }}</a>
+          <a :href="repo.link" target="_blank" class="text-2xl">{{ repo.owner }}/</a>
           <a :href="repo.link" target="_blank" class="text-2xl">{{ repo.name }}</a>
         </div>
         <p class="my-1 max-w-200 truncate text-xs text-zinc">

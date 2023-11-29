@@ -6,6 +6,7 @@ const props = defineProps<{
   data: any[]
 }>()
 const { data: currentData } = toRefs(props)
+let yIndex: any
 const chartOptions = ref<any>({
   title: {
     text: 'Star/Fork/Starup总和排行榜',
@@ -33,6 +34,21 @@ const chartOptions = ref<any>({
   yAxis: {
     type: 'category',
     data: [],
+    triggerEvent: true,
+    axisLabel: {
+      formatter(value: string, index: number) {
+        if (index === yIndex)
+          return `{b|${value}}`
+        else
+          return value
+      },
+      rich: {
+        b: {
+          color: '#3D82F6',
+          align: 'center',
+        },
+      },
+    },
   },
   series: [
     {
@@ -97,7 +113,7 @@ function draw(data: Repo[], isUpdate = false) {
     stars.push(strToNumber(item.stars))
     forks.push(strToNumber(item.forks))
     starup.push(strToNumber(item.starup))
-    names.push(`${item.owner}${item.name}`)
+    names.push(`${item.owner}/${item.name}`)
   })
   chartOptions.value.yAxis.data = names
   chartOptions.value.series[0].data = stars
@@ -105,8 +121,30 @@ function draw(data: Repo[], isUpdate = false) {
   chartOptions.value.series[2].data = starup
   chart.setOption(chartOptions.value, isUpdate ? { replaceMerge: ['xAxis', 'yAxis', 'series'] } : {})
 }
+
 onMounted(() => {
   draw(currentData.value)
+  /** y 坐标文本点击事件 */
+  chart.on('click', (params: any) => {
+    const { value = '', componentType } = params
+    if (componentType === 'yAxis')
+      window.open(`https://github.com/${value}`, '_blank')
+  })
+  /** y 坐标文本悬浮高亮 */
+  chart.on('mouseover', (params: any) => {
+    const { componentType, tickIndex } = params
+    if (componentType === 'yAxis') {
+      yIndex = tickIndex
+      draw(currentData.value)
+    }
+  })
+  chart.on('mouseout', (params: any) => {
+    const { componentType } = params
+    if (componentType === 'yAxis') {
+      yIndex = undefined
+      draw(currentData.value)
+    }
+  })
 })
 watch(currentData, () => {
   draw(currentData.value, true)

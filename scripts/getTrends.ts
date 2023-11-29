@@ -26,7 +26,7 @@ function parseTrendsHtml(html: string) {
   const $ = load(html)
   $('.Box article.Box-row').each((i, el) => {
     const title = $(el).find('.h3 a').text().trim()
-    const owner = $(el).find('.h3.lh-condensed a .text-normal').text().trim()
+    const owner = $(el).find('.h3.lh-condensed a .text-normal').text().split('/')[0].trim()
     const name = $(el).find('.h3.lh-condensed a').text().split('/')[1].trim()
     const path = $(el).find('.h3 a').attr('href')
     const link = path ? `https://github.com${path}` : ''

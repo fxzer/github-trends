@@ -7,19 +7,26 @@ on:
       - LICENSE
       - README.md
   schedule:
-    - cron: '0 6,18 * * *'
+    - cron: '0 0,12 * * *'
+env:
+  TZ: Asia/Shanghai # 设置时区：中国上海
 
 jobs:
   build-deploy:
     runs-on: ubuntu-latest
     steps:
+      - name: Show the timezone
+        run: |
+          echo "当前时区： $TZ"
+          echo "当前时间： $(date +"%Y-%m-%d %H:%M:%S")"
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
         with:
           node-version: 18
           registry-url: 'https://registry.npmjs.org'
 
-      - uses: pnpm/action-setup@v2
+      - name: Setup PNPM
+        uses: pnpm/action-setup@v2
         with:
           version: 8
           run_install: true
@@ -30,15 +37,14 @@ jobs:
           path: README.md
           body: '{{date:YYYY-MM-DD HH:mm:ss}}'
 
-      - name: Build 🔧
+      - name: Build & Generate
         run: |
-          date +"%Y-%m-%d %H:%M:%S"
           pnpm run get
           pnpm run build
           pnpm run generate
           ls -lrth
 
-      - name: Deploy
+      - name: Deploy to github-pages
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.DEPLOY_TOKEN }}
