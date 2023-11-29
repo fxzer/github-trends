@@ -7,18 +7,23 @@ const userList = ref<any[]>([])
 watch(userRange, () => {
   userList.value = dataMap[`${userRange.value}`]
 }, { immediate: true })
+const view = ref<'list' | 'chart'>('list')
 </script>
 
 <template>
   <div>
-    <el-radio-group v-model="userRange">
-      <el-radio-button v-for="item in USER_RANGES" :key="item.value" :label="item.value">
-        {{ item.label }}
-      </el-radio-button>
-    </el-radio-group>
-    <div class="grid grid-cols-2 my-2 gap-2">
+    <div class="flex-around-center w-full">
+      <el-radio-group v-model="userRange">
+        <el-radio-button v-for="item in USER_RANGES" :key="item.value" :label="item.value">
+          {{ item.label }}
+        </el-radio-button>
+      </el-radio-group>
+      <Views v-model="view" />
+    </div>
+    <div v-if="view === 'list'" class="grid grid-cols-2 my-2 gap-2">
       <User v-for="(user, index) in userList" :key="index" :user="user" />
     </div>
+    <UserChart v-else-if="view === 'chart'" :data="userList" />
   </div>
 </template>
 

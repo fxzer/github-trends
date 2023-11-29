@@ -16,10 +16,7 @@ const view = ref<'list' | 'chart'>('list')
     <div class="flex items-center justify-around">
       <slot name="date-range" />
       <Language v-model="language" />
-      <div class="flex cursor-pointer space-x-2 dark:text-zinc-300">
-        <Icon name="material-symbols-light:lists" class="scale-122" :class="view === 'list' ? 'text-lime-500' : ''" @click="view = 'list'" />
-        <Icon name="lucide:bar-chart-horizontal" :class="view === 'chart' ? 'text-lime-500' : ''" @click="view = 'chart'" />
-      </div>
+      <Views v-model="view" />
     </div>
     <template v-if="view === 'list'">
       <Repo v-for="(item, index) in repoList" :key="index" class="repo-item" :index="index" :repo="item" :color="langColors[language]" />

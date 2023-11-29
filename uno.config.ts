@@ -12,6 +12,7 @@ export default defineConfig({
     ['flex-x-center', 'flex justify-center'],
     ['flex-start-center', 'flex justify-start items-center'],
     ['flex-between-center', 'flex justify-between items-center'],
+    ['flex-around-center', 'flex justify-around items-center'],
     // 宽高相同
     [/^wh-(.+)$/, ([, c]) => `w-${c}  h-${c}`],
   ],
