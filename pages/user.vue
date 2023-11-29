@@ -12,7 +12,7 @@ const view = ref<'list' | 'chart'>('list')
 
 <template>
   <div>
-    <div class="flex-around-center w-full">
+    <div class="w-full flex-around-center">
       <el-radio-group v-model="userRange">
         <el-radio-button v-for="item in USER_RANGES" :key="item.value" :label="item.value">
           {{ item.label }}

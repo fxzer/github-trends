@@ -1,8 +1,15 @@
 export function useChartOptions(title: string, series: any[] = []) {
+  const legendData = series.map(item => item.name)
   return ref<any>({
     title: {
       text: title,
       left: 'center',
+    },
+    legend: {
+      data: legendData,
+      //位置
+      left: 'right',
+      top: 'top',
     },
     grid: {
       left: 80,
@@ -11,7 +18,12 @@ export function useChartOptions(title: string, series: any[] = []) {
       top: 30,
       containLabel: true,
     },
-    tooltip: {},
+    tooltip: {
+      trigger: 'axis',
+      axisPointer: {
+        type: 'shadow',
+      },
+    },
     xAxis: {
       // 分隔线
       splitLine: {

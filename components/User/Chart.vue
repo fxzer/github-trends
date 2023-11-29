@@ -10,10 +10,11 @@ const series = [
     stack: 'total',
     // 颜色
     itemStyle: {
-      color: '#9FE080',
+      color: '#f472b6',
     },
     label: {
       show: true,
+      color:'#fff',
     },
     emphasis: {
       focus: 'series',
@@ -43,7 +44,7 @@ function dataHandle(data: any) {
   const [followers, public_repos, names] = data.reduce((prev: any, item: any) => {
     prev[0].unshift(item.followers)
     prev[1].unshift(item.public_repos)
-    prev[2].unshift(item.name)
+    prev[2].unshift(`${item.name} (${item.login})`)
     return prev
   }, [[], [], []])
   option.value.yAxis.data = names
