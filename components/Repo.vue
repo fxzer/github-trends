@@ -1,10 +1,10 @@
 <script setup lang='ts'>
-import type { Repo } from '~/utils'
+import { formatSize } from '~/utils'
 
 defineProps<{
   index: number
   color: string
-  repo: Repo
+  repo: any
 }>()
 </script>
 
@@ -19,34 +19,23 @@ defineProps<{
     <div class="flex-1">
       <div>
         <div :style="{ color }">
-          <a :href="repo.link" target="_blank" class="text-2xl">{{ repo.owner }}</a>
-          <a :href="repo.link" target="_blank" class="text-2xl">{{ repo.name }}</a>
+          <a :href="repo.html_url" target="_blank" class="text-2xl">{{ repo.owner.login }}</a>
+          <a :href="repo.clone_url" target="_blank" class="text-2xl">{{ repo.name }}</a>
         </div>
-        <p class="my-1 max-w-200 truncate text-xs text-zinc">
+        <p class="my-1 max-w-200 truncate text-sm text-zinc">
           {{ repo.description }}
         </p>
       </div>
       <div class="flex text-zinc-500">
         <Icon name="material-symbols:kid-star-outline-sharp" class="mr-1" />{{ repo.stars }}
         <Icon name="charm:git-fork" class="ml-6 mr-1" />{{ repo.forks }}
-        <Icon name="ph:star-half-bold" class="ml-6 mr-1" color="#ef4444" />
-        <span class="text-red-500">{{ repo.starup }}</span>
+        <Icon name="fluent:table-resize-column-24-regular" title="size" class="ml-6 mr-1" /> {{
+          formatSize(repo.size) }}
+        <Icon name="solar:eye-outline" class="ml-6 mr-1" /> {{ repo.watchers }}
       </div>
     </div>
-    <el-image
-      lazy
-      class="h-20 w-50"
-      :src="`https://starchart.cc${repo.path}.svg`"
-      :zoom-rate="1.2"
-      :max-scale="4"
-      :min-scale="0.5"
-      :preview-src-list="[`https://starchart.cc${repo.path}.svg`]"
-      :initial-index="40"
-      fit="cover"
-    />
   </div>
 </template>
 
 <style scoped lang='scss'>
-
 </style>

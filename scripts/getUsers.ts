@@ -17,7 +17,7 @@ export async function getUsers(page: number, isChina?: boolean) {
 
 export async function getUsersData() {
   const allUsers: any = { }
-  for (const range of USER_RANGES) {
+  for (const range of USER_RANGES.map(i => i.value)) {
     const users = []
     for (let i = 1; i <= 1; i++) {
       const dt = await getUsers(i, range === 'China')

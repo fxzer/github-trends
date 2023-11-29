@@ -32,6 +32,7 @@ jobs:
 
       - name: Build 🔧
         run: |
+          date +"%Y-%m-%d %H:%M:%S"
           pnpm run get
           pnpm run build
           pnpm run generate

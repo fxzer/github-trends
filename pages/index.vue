@@ -1,6 +1,6 @@
 <script setup lang='ts'>
 import { type DateRange, type Language, type Repo, langColors, strToNumber } from '../utils'
-import dataMap from '~/data/trending/index.js'
+import dataMap from '~/data/trending.js'
 
 const dateRange = ref<DateRange>('daily')
 const language = ref<Language>('JavaScript')
@@ -21,7 +21,7 @@ watch([dateRange, language], () => {
       <DateRange v-model="dateRange" />
       <Language v-model="language" />
       <div class="flex cursor-pointer space-x-2 dark:text-zinc-300">
-        <Icon name="mdi:format-list-bulleted-square" size="26" :class="view === 'list' ? 'text-lime-500' : ''" @click="view = 'list'" />
+        <Icon name="material-symbols-light:lists" class="scale-122" :class="view === 'list' ? 'text-lime-500' : ''" @click="view = 'list'" />
         <Icon name="lucide:bar-chart-horizontal" :class="view === 'chart' ? 'text-lime-500' : ''" @click="view = 'chart'" />
         <Icon name="mdi:chart-line" :class="view === 'starup-chart' ? 'text-lime-500' : ''" @click="view = 'starup-chart'" />
       </div>

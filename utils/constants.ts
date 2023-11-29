@@ -1,3 +1,4 @@
+export type DateRange = typeof DATE_RANGE_LIST[number]['value']
 export const DATE_RANGE_LIST = [
   {
     label: '日榜',
@@ -12,7 +13,19 @@ export const DATE_RANGE_LIST = [
     value: 'monthly',
   },
 ] as const
-export type DateRange = typeof DATE_RANGE_LIST[number]['value']
+export const USER_RANGES = [
+  {
+    label: '全球',
+    value: 'Global',
+  },
+  {
+    label: '中国',
+    value: 'China',
+  },
+] as const
+export type UserRange = typeof USER_RANGES[number]['value']
+
+export type Language = typeof LANGUAGE_LIST[number]
 export const LANGUAGE_LIST = [
   'JavaScript',
   'TypeScript',
@@ -27,7 +40,6 @@ export const LANGUAGE_LIST = [
   // 'Go',
   // 'C',
 ] as const
-export type Language = typeof LANGUAGE_LIST[number]
 
 export interface Repo {
   title: string
@@ -35,7 +47,7 @@ export interface Repo {
   owner: string
   name: string
   link: string
-  desciption: string
+  description: string
   language: string
   stars: string
   forks: string

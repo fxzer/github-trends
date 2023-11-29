@@ -15,7 +15,7 @@ export async function getRepos(lang: string, page: number) {
       per_page: 10,
     })
     if (dt && dt.data && dt.data.items)
-      return dt.data.items
+      return dt.data.items.map(repo => ({ ...repo, stars: repo.stargazers_count }))
   }
   catch (error) {
     if (error instanceof Error)
