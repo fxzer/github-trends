@@ -1,4 +1,3 @@
-import { getUsersData } from './getUsers'
 import { getTrendData } from './getTrends'
 
 await getTrendData()

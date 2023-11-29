@@ -1,12 +1,20 @@
 <script setup lang='ts'>
 import * as echarts from 'echarts'
+
+import type { ECharts } from 'echarts'
 import { deepClone, strToNumber } from '../utils'
 
 const props = defineProps<{
   data: any[]
 }>()
 const { data: currentData } = toRefs(props)
-let yIndex: any
+
+declare module 'echarts' {
+  interface ECharts {
+    yIndex?: number
+  }
+}
+let chart: ECharts
 const chartOptions = ref<any>({
   title: {
     text: 'Star/Fork/Starup总和排行榜',
@@ -23,7 +31,6 @@ const chartOptions = ref<any>({
   xAxis: {
     // 分隔线
     splitLine: {
-      // 颜色
       lineStyle: {
         color: '#99999970',
       },
@@ -37,7 +44,7 @@ const chartOptions = ref<any>({
     triggerEvent: true,
     axisLabel: {
       formatter(value: string, index: number) {
-        if (index === yIndex)
+        if (index === chart.yIndex)
           return `{b|${value}}`
         else
           return value
@@ -96,7 +103,7 @@ const chartOptions = ref<any>({
     },
   ],
 })
-let chart: any
+
 function draw(data: Repo[], isUpdate = false) {
   const dataCopy = deepClone(data)
   isUpdate ? chart.clear() : (chart = echarts.init(document.getElementById('main') as HTMLDivElement))
@@ -124,28 +131,9 @@ function draw(data: Repo[], isUpdate = false) {
 
 onMounted(() => {
   draw(currentData.value)
-  /** y 坐标文本点击事件 */
-  chart.on('click', (params: any) => {
-    const { value = '', componentType } = params
-    if (componentType === 'yAxis')
-      window.open(`https://github.com/${value}`, '_blank')
-  })
-  /** y 坐标文本悬浮高亮 */
-  chart.on('mouseover', (params: any) => {
-    const { componentType, tickIndex } = params
-    if (componentType === 'yAxis') {
-      yIndex = tickIndex
-      draw(currentData.value)
-    }
-  })
-  chart.on('mouseout', (params: any) => {
-    const { componentType } = params
-    if (componentType === 'yAxis') {
-      yIndex = undefined
-      draw(currentData.value)
-    }
-  })
+  useChartBehaver(chart, chartOptions)
 })
+
 watch(currentData, () => {
   draw(currentData.value, true)
 }, { deep: true })

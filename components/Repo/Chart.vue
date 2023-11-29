@@ -1,11 +1,20 @@
 <script setup lang='ts'>
 import * as echarts from 'echarts'
+import type { ECharts } from 'echarts'
 import { deepClone } from '~/utils'
 
 const props = defineProps<{
   data: any[]
 }>()
+
+declare module 'echarts' {
+  interface ECharts {
+    yIndex?: number
+  }
+}
+
 const { data: currentData } = toRefs(props)
+let chart: ECharts
 const chartOptions = ref<any>({
   title: {
     text: '仓库排行榜',
@@ -22,7 +31,6 @@ const chartOptions = ref<any>({
   xAxis: {
     // 分隔线
     splitLine: {
-      // 颜色
       lineStyle: {
         color: '#99999970',
       },
@@ -33,6 +41,21 @@ const chartOptions = ref<any>({
   yAxis: {
     type: 'category',
     data: [],
+    triggerEvent: true,
+    axisLabel: {
+      formatter(value: string, index: number) {
+        if (index === chart.yIndex)
+          return `{b|${value}}`
+        else
+          return value
+      },
+      rich: {
+        b: {
+          color: '#3D82F6',
+          align: 'center',
+        },
+      },
+    },
   },
   series: [
     {
@@ -80,7 +103,6 @@ const chartOptions = ref<any>({
     },
   ],
 })
-let chart: any
 function draw(data: Repo[], isUpdate = false) {
   const dataCopy = deepClone(data)
   isUpdate ? chart.clear() : (chart = echarts.init(document.getElementById('repos-main') as HTMLDivElement))
@@ -88,7 +110,7 @@ function draw(data: Repo[], isUpdate = false) {
   const forks: number[] = []
   const watchers: number[] = []
   const names: string[] = []
-  dataCopy.forEach((item: Repo) => {
+  dataCopy.forEach((item: any) => {
     stars.unshift(item.stars)
     forks.unshift(item.forks)
     watchers.unshift(item.watchers)
@@ -102,6 +124,7 @@ function draw(data: Repo[], isUpdate = false) {
 }
 onMounted(() => {
   draw(currentData.value)
+  useChartBehaver(chart, chartOptions)
 })
 watch(currentData, () => {
   draw(currentData.value, true)

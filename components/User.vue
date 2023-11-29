@@ -5,29 +5,28 @@ import updateLocale from 'dayjs/plugin/updateLocale'
 
 defineProps(['user'])
 
-
 dayjs.extend(relativeTime)
 dayjs.extend(updateLocale)
 dayjs.updateLocale('en', {
   relativeTime: {
     past: '%s前',
     s: '几秒',
-    m: "几分钟",
-    mm: "%d 分钟",
-    h: "an 小时",
-    hh: "%d 小时",
-    d: "一天",
-    dd: "%d 天",
-    M: "一月",
-    MM: "%d 月",
-    y: "一年",
-    yy: "%d 年"
+    m: '几分钟',
+    mm: '%d 分钟',
+    h: 'an 小时',
+    hh: '%d 小时',
+    d: '一天',
+    dd: '%d 天',
+    M: '一月',
+    MM: '%d 月',
+    y: '一年',
+    yy: '%d 年',
   },
 })
 </script>
 
 <template>
-  <div class="users-center flex border rounded-md p2 dark:border-gray-600/80 hover:border-blue">
+  <div class="flex items-center border rounded-md p2 dark:border-gray-600/80 hover:border-blue">
     <img :src="user.avatar_url" class="mr-2 wh-15 rounded-full">
     <div class="space-y-1">
       <a :href="user.html_url" target="_blank" class="text-lg">

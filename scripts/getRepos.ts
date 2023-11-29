@@ -2,6 +2,7 @@ import process from 'node:process'
 import { request } from '@octokit/request'
 import { saveData } from './saveData'
 
+const REPO_COUNT = 20 /** 每个语言获取的总仓库数 */
 export async function getRepos(lang: string, page: number) {
   const headers: { authorization?: string } = {}
   if (process.env.GITHUB_TRENDS_TOKEN)
@@ -29,7 +30,7 @@ export async function getReposData() {
   const allRepos: any = { }
   for (const lang of languages) {
     const langRepos = []
-    for (let i = 1; i <= 2; i++) {
+    for (let i = 1; i <= REPO_COUNT / 10; i++) {
       const dt = await getRepos(lang, i)
       if (dt && dt.length)
         langRepos.push(...dt)

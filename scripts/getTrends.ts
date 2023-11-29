@@ -32,7 +32,6 @@ function parseTrendsHtml(html: string) {
     const link = path ? `https://github.com${path}` : ''
     const description = $(el).find('p.col-9.color-fg-muted.my-1.pr-4').text().trim()
     const language = $(el).find('[itemprop=programmingLanguage]').text().trim() || ''
-    // const languageBgColor = $(el).find('.repo-language-color').attr('style')
     const stars = $(el).find('a[href*="stargazers"]').text().trim()
     const forks = $(el).find('a[href*="forks"]').text().trim()
     const starup = $(el).find('.float-sm-right').text().trim().split(' ')[0]
