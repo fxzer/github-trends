@@ -1,28 +1,7 @@
 <script setup lang='ts'>
-import dayjs from 'dayjs'
-import relativeTime from 'dayjs/plugin/relativeTime'
-import updateLocale from 'dayjs/plugin/updateLocale'
+import dayjs from '~/utils/day'
 
 defineProps(['user'])
-
-dayjs.extend(relativeTime)
-dayjs.extend(updateLocale)
-dayjs.updateLocale('en', {
-  relativeTime: {
-    past: '%s前',
-    s: '几秒',
-    m: '几分钟',
-    mm: '%d 分钟',
-    h: 'an 小时',
-    hh: '%d 小时',
-    d: '一天',
-    dd: '%d 天',
-    M: '一月',
-    MM: '%d 月',
-    y: '一年',
-    yy: '%d 年',
-  },
-})
 </script>
 
 <template>
@@ -65,3 +44,4 @@ dayjs.updateLocale('en', {
 <style scoped lang='scss'>
 
 </style>
+~/utils/day
