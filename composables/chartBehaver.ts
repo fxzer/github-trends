@@ -1,4 +1,7 @@
-export function useChartBehaver(chart: any, chartOptions: Ref<any>) {
+// import type * as echarts from 'echarts/core'
+import type { ECOption } from './echarts'
+
+export function useChartBehaver(chart: any, option: ECOption) {
   chart.on('click', (params: any) => {
     const { value = '', componentType } = params
     if (componentType === 'yAxis')
@@ -9,14 +12,19 @@ export function useChartBehaver(chart: any, chartOptions: Ref<any>) {
     const { componentType, tickIndex } = params
     if (componentType === 'yAxis') {
       chart.yIndex = tickIndex
-      chart.setOption(chartOptions.value)
+      if (option.yAxis && option.yAxis.axisLabel) {
+        option.yAxis.axisLabel!.formatter = (value: string, index: number) => {
+          if (chart.yIndex && index === chart.yIndex)
+            return `{b|${value}}`
+          else
+            return value
+        }
+      }
     }
   })
-  chart.on('mouseout', (params: any) => {
-    const { componentType } = params
-    if (componentType === 'yAxis') {
-      chart.yIndex = undefined
-      chart.setOption(chartOptions.value)
-    }
-  })
+  // chart.on('mouseout', (params: any) => {
+  //   const { componentType } = params
+  //   if (componentType === 'yAxis')
+  //     chart.yIndex = undefined
+  // })
 }

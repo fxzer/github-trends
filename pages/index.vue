@@ -27,10 +27,10 @@ watch([dateRange, language], () => {
       </div>
     </div>
     <template v-if="view === 'list'">
-      <RepoItem v-for="(item, index) in currentData" :key="index" class="repo-item" :index="index" :repo="item" :color="langColors[language]" />
+      <TrendRepo v-for="(item, index) in currentData" :key="index" class="repo-item" :index="index" :repo="item" :color="langColors[language]" />
     </template>
-    <Chart v-else-if="view === 'chart'" :data="currentData" />
-    <StarupChart v-else :data="currentData" />
+    <TrendChart v-else-if="view === 'chart'" :data="currentData" />
+    <TrendStarupChart v-else :data="currentData" />
   </div>
 </template>
 

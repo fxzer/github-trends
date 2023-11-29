@@ -1,7 +1,10 @@
 <script setup lang='ts'>
+import { deepClone, strToNumber } from '~/utils'
+
 const props = defineProps<{
   data: any[]
 }>()
+const { data: currentData } = toRefs(props)
 
 const series = [
   {
@@ -34,11 +37,11 @@ const series = [
     },
   },
   {
-    name: 'watchers',
+    name: 'starup',
     type: 'bar',
     stack: 'total',
     itemStyle: {
-      color: '#818cf8',
+      color: '#EE6666',
     },
     label: {
       show: true,
@@ -48,27 +51,30 @@ const series = [
     },
   },
 ]
-const { data } = toRefs(props)
-
-const option = useChartOptions('仓库排行榜', series)
-const { domRef: chartRef } = useEcharts(option, useChartBehaver)
-
-function dataHandle(data: any) {
-  const [stars, forks, watchers, names] = data.reduce((prev: any, item: any) => {
-    prev[0].unshift(item.stars)
-    prev[1].unshift(item.forks)
-    prev[2].unshift(item.watchers)
-    prev[3].unshift(item.full_name)
+const option = useChartOptions('Star/Fork/Starup总和排行榜', series)
+function handleData(data: Repo[]) {
+  const dataCopy = deepClone(data)
+  dataCopy.sort((a: Repo, b: Repo) => {
+    const acount = strToNumber(a.starup) + strToNumber(a.stars) + strToNumber(a.forks)
+    const bcount = strToNumber(b.starup) + strToNumber(b.stars) + strToNumber(b.forks)
+    return acount - bcount
+  })
+  const [stars, forks, starup, names] = dataCopy.reduce((prev: any, item: any) => {
+    prev[0].push(strToNumber(item.stars))
+    prev[1].push(strToNumber(item.forks))
+    prev[2].push(strToNumber(item.starup))
+    prev[3].push(`${item.owner}/${item.name}`)
     return prev
   }, [[], [], [], []])
   option.value.yAxis.data = names
   option.value.series[0].data = stars
   option.value.series[1].data = forks
-  option.value.series[2].data = watchers
+  option.value.series[2].data = starup
 }
 
-watch(data, () => {
-  dataHandle(data.value)
+const { domRef: chartRef } = useEcharts(option, useChartBehaver)
+watch(currentData, () => {
+  handleData(currentData.value)
 }, { deep: true, immediate: true })
 </script>
 
