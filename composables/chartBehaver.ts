@@ -1,7 +1,4 @@
-// import type * as echarts from 'echarts/core'
-import type { ECOption } from './echarts'
-
-export function useChartBehaver(chart: any, option: ECOption) {
+export function useChartBehaver(chart: any, option: any) {
   chart.on('click', (params: any) => {
     const { value = '', componentType } = params
     if (componentType === 'yAxis') {

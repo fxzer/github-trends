@@ -2,9 +2,9 @@
 </script>
 
 <template>
-  <div class="mx-auto">
+  <div class="mx-auto min-h-screen text-sm lg:w-250 xl:w-300 dark:bg-black lt-lg:px-4">
     <Header />
-    <div class="flex-center">
+    <div class="w-full">
       <slot />
     </div>
   </div>

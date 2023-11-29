@@ -14,7 +14,7 @@ const series = [
     },
     label: {
       show: true,
-      color:'#fff',
+      color: '#fff',
     },
     emphasis: {
       focus: 'series',

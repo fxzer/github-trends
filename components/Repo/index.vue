@@ -9,8 +9,8 @@ defineProps<{
 </script>
 
 <template>
-  <div class="flex border rounded-md p-1 space-x-4 dark:border-gray-600/80 hover:border-blue">
-    <div class="wh-20 flex-center">
+  <div class="flex overflow-hidden border rounded-md p-1 space-x-4 dark:border-gray-600/80 hover:border-blue">
+    <div class="min-wh-20 flex-center">
       <img v-if="index === 0" src="/rank/1.svg" alt="" class="wh-full">
       <img v-if="index === 1" src="/rank/2.svg" alt="" class="wh-full">
       <img v-if="index === 2" src="/rank/3.svg" alt="" class="wh-full">

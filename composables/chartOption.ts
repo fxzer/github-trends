@@ -7,7 +7,7 @@ export function useChartOptions(title: string, series: any[] = []) {
     },
     legend: {
       data: legendData,
-      //位置
+      // 位置
       left: 'right',
       top: 'top',
     },

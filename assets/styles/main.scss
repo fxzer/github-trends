@@ -20,3 +20,14 @@ html.dark{
 .dark::view-transition-old(root) {
   z-index: 9999;
 }
+.gradient-text {
+  text-align: center;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: transparent;
+  background: linear-gradient(120deg,#c347fc,#3a7cfe);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: linear-gradient(120deg,linear-gradient(120deg,#ca57ff,#3a7cfe));
+}
