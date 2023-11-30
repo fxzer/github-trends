@@ -14,4 +14,5 @@ git commit -m '🎉deploy gh-pages🎉'
 
 git push -f git@gitee.com:fxzer/github-trends.git main:gh-pages
 
+cd ../..
 

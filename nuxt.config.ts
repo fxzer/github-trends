@@ -55,10 +55,15 @@ export default defineNuxtConfig({
         {
           hid: 'icon',
           rel: 'icon',
+          href: '/logo.ico',
+        },
+        {
+          hid: 'icon',
+          rel: 'icon',
           href: '/logo.svg',
         },
         // 网址规范化
-        { rel: 'canonical', href: 'https://www.xxx.com' },
+        { rel: 'canonical', href: 'https://github-trends-neon.vercel.app' },
       ],
       script: [],
     },
