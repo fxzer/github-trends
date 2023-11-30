@@ -1,11 +1,11 @@
 name: Build & Deploy
 on:
-  push:
-    branches:
-      - main
-    paths-ignore: # 下列文件的变更不触发部署
-      - LICENSE
-      # - README.md
+  # push:
+  #   branches:
+  #     - main
+  #   paths-ignore: # 下列文件的变更不触发部署
+  #     - LICENSE
+  # - README.md
   schedule:
     - cron: '30 4,16 * * *'
 env:
@@ -54,9 +54,9 @@ jobs:
       #     path: README.md
       #     body: '{{date:YYYY-MM-DD HH:mm:ss}}'
       #     overwrite: 'true'
-      # pnpm run get
       - name: Build & Generate
         run: |
+          pnpm run get
           pnpm run build
           pnpm run generate
           ls -lrth
