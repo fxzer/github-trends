@@ -13,7 +13,7 @@ env:
   QQ_EMAIL: ${{ secrets.QQ_EMAIL }}
   WY_EMAIL: ${{ secrets.WY_EMAIL }}
   QQ_EMAIL_AUTH: ${{ secrets.QQ_EMAIL_AUTH }}
-
+  ACCESS_TOKEN: ${{ secrets.DEPLOY_TOKEN }}
 jobs:
   build-deploy:
     runs-on: ubuntu-latest
