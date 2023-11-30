@@ -15,8 +15,9 @@ jobs:
   build-deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: Show the timezone
+      - name: Set the timezone
         run: |
+          sudo timedatectl set-timezone "$TZ"
           echo "当前时区： $TZ"
           echo "当前时间： $(date +"%Y-%m-%d %H:%M:%S")"
       - uses: actions/checkout@v3

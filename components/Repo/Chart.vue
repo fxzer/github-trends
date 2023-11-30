@@ -50,7 +50,7 @@ const series = [
 ]
 const { data } = toRefs(props)
 
-const option = useChartOptions('仓库排行榜', series)
+const option = useChartOptions('仓库人气榜', series)
 const { domRef: chartRef } = useEcharts(option, useChartBehaver)
 
 function dataHandle(data: any) {
@@ -70,10 +70,11 @@ function dataHandle(data: any) {
 watch(data, () => {
   dataHandle(data.value)
 }, { deep: true, immediate: true })
+const height = `${100 + data.value.length * 40}px`
 </script>
 
 <template>
-  <div ref="chartRef" class="h-300 w-330" />
+  <div ref="chartRef" :style="{ height }" />
 </template>
 
 <style scoped lang='scss'>

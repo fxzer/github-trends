@@ -89,6 +89,27 @@ export function useEcharts(
         // 节点被删除 将chart置为空
         chart = null
       }
+      // 移动端 隐藏containLabel
+      if (newWidth < 640) {
+        options.value.grid = {
+          ...options.value.grid,
+          containLabel: false,
+        }
+        options.value.title = {
+          ...options.value.title,
+          left: 0,
+        }
+      }
+      else {
+        options.value.grid = {
+          ...options.value.grid,
+          containLabel: true,
+        }
+        options.value.title = {
+          ...options.value.title,
+          left: 'center',
+        }
+      }
       if (canRender()) {
         if (!isRendered())
           render()

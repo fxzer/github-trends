@@ -4,7 +4,7 @@ import { deepClone, strToNumber } from '~/utils'
 const props = defineProps<{
   data: any[]
 }>()
-const { data: currentData } = toRefs(props)
+const { data } = toRefs(props)
 
 const series = [
   {
@@ -51,7 +51,7 @@ const series = [
     },
   },
 ]
-const option = useChartOptions('Star/Fork/Starup总和排行榜', series)
+const option = useChartOptions('仓库飙升榜', series)
 function handleData(data: Repo[]) {
   const dataCopy = deepClone(data)
   dataCopy.sort((a: Repo, b: Repo) => {
@@ -73,13 +73,14 @@ function handleData(data: Repo[]) {
 }
 
 const { domRef: chartRef } = useEcharts(option, useChartBehaver)
-watch(currentData, () => {
-  handleData(currentData.value)
+watch(data, () => {
+  handleData(data.value)
 }, { deep: true, immediate: true })
+const height = `${100 + data.value.length * 40}px`
 </script>
 
 <template>
-  <div ref="chartRef" class="h-300 w-330" />
+  <div ref="chartRef" :style="{ height }" />
 </template>
 
 <style scoped lang='scss'>

@@ -44,10 +44,11 @@ function handleData(data: Repo[]) {
 watch(data, () => {
   handleData(data.value)
 }, { deep: true, immediate: true })
+const height = `${100 + data.value.length * 40}px`
 </script>
 
 <template>
-  <div ref="chartRef" class="h-300 w-330" />
+  <div ref="chartRef" :style="{ height }" />
 </template>
 
 <style scoped lang='scss'>
