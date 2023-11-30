@@ -1,9 +1,8 @@
 <script setup>
-import pkg from '../package.json'
+import { updateTime } from '~/data/updateTime'
 
 const isDark = useDark()
 const route = useRoute()
-const { updateTime } = pkg
 function isActive(path) {
   return route.path === path ? 'text-green-500' : ''
 }
