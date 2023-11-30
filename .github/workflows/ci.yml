@@ -51,9 +51,9 @@ jobs:
       #     path: README.md
       #     body: '{{date:YYYY-MM-DD HH:mm:ss}}'
 
+      # pnpm run get
       - name: Build & Generate
         run: |
-          pnpm run get
           pnpm run build
           pnpm run generate
           ls -lrth
