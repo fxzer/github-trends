@@ -53,7 +53,7 @@ jobs:
         with:
           path: README.md
           body: '{{date:YYYY-MM-DD HH:mm:ss}}'
-
+          overwrite: 'true'
     # pnpm run get
     # - name: Build & Generate
     #   run: |
