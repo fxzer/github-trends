@@ -2,7 +2,7 @@ import { USER_RANGES } from '../utils'
 import { saveData } from './saveData'
 import { orequest } from './octokit'
 
-const USRE_COUNT = 20 /** 每个范围获取的总人数 */
+const USRE_COUNT = 100 /** 每个范围获取的总人数 */
 export async function getUserInfo(username: string) {
   return await orequest(`GET /users/${username}`)
 }

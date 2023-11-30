@@ -3,8 +3,8 @@
 </script>
 
 <template>
-  <div class="flex-between-center flex-wrap gap-3 py-4">
-    <slot />
+  <div>
+    404 work!
   </div>
 </template>
 

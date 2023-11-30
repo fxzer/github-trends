@@ -20,11 +20,24 @@ jobs:
           sudo timedatectl set-timezone "$TZ"
           echo "当前时区： $TZ"
           echo "当前时间： $(date +"%Y-%m-%d %H:%M:%S")"
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
+
+      - name: Set current time
+        run: echo "CURRENT_TIME=$(date +"%Y-%m-%d %H:%M:%S")" >> $GITHUB_ENV
+
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
         with:
           node-version: 18
           registry-url: 'https://registry.npmjs.org'
+
+      - name: Update package.json values
+        uses: restackio/update-json-values-action@v1.0.0
+        with:
+          file: package.json
+          values: '{"updateTime": "${{ env.CURRENT_TIME }}"}'
 
       - name: Setup PNPM
         uses: pnpm/action-setup@v2
@@ -32,11 +45,11 @@ jobs:
           version: 8
           run_install: true
 
-      - name: Modify README.md
-        uses: jaywcjlove/github-action-modify-file-content@main
-        with:
-          path: README.md
-          body: '{{date:YYYY-MM-DD HH:mm:ss}}'
+      # - name: Modify README.md
+      #   uses: jaywcjlove/github-action-modify-file-content@main
+      #   with:
+      #     path: README.md
+      #     body: '{{date:YYYY-MM-DD HH:mm:ss}}'
 
       - name: Build & Generate
         run: |
