@@ -1,1 +1,0 @@
-import{_ as e,o as t,c as o}from"./entry.fd64675f.js";const c={},s={class:"text-2xl font-bold"};function n(r,l){return t(),o("div",s," the global title work! ")}const a=e(c,[["render",n]]);export{a as default};
