@@ -5,9 +5,9 @@ on:
       - main
     paths-ignore: # 下列文件的变更不触发部署
       - LICENSE
-      - README.md
+      # - README.md
   schedule:
-    - cron: '0 0,12 * * *'
+    - cron: '30 4,16 * * *'
 env:
   TZ: Asia/Shanghai # 设置时区：中国上海
   QQ_EMAIL: ${{ secrets.QQ_EMAIL }}
@@ -18,56 +18,56 @@ jobs:
   build-deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: Set the timezone
-        run: |
-          sudo timedatectl set-timezone "$TZ"
-          echo "当前时区： $TZ"
-          echo "当前时间： $(date +"%Y-%m-%d %H:%M:%S")"
+      # - name: Set the timezone
+      #   run: |
+      #     sudo timedatectl set-timezone "$TZ"
+      #     echo "当前时区： $TZ"
+      #     echo "当前时间： $(date +"%Y-%m-%d %H:%M:%S")"
 
-      - name: Set current time
-        run: echo "CURRENT_TIME=$(date +"%Y-%m-%d %H:%M:%S")" >> $GITHUB_ENV
+      # - name: Set current time
+      #   run: echo "CURRENT_TIME=$(date +"%Y-%m-%d %H:%M:%S")" >> $GITHUB_ENV
 
-      - name: Checkout code
-        uses: actions/checkout@v3
+      # - name: Checkout code
+      #   uses: actions/checkout@v3
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: 18
-          registry-url: 'https://registry.npmjs.org'
-
-      - name: Update package.json values
-        uses: restackio/update-json-values-action@v1.0.0
-        with:
-          file: package.json
-          values: '{"updateTime": "${{ env.CURRENT_TIME }}"}'
-
-      - name: Setup PNPM
-        uses: pnpm/action-setup@v2
-        with:
-          version: 8
-          run_install: true
-
-      # - name: Modify README.md
-      #   uses: jaywcjlove/github-action-modify-file-content@main
+      # - name: Setup Node.js
+      #   uses: actions/setup-node@v3
       #   with:
-      #     path: README.md
-      #     body: '{{date:YYYY-MM-DD HH:mm:ss}}'
+      #     node-version: 18
+      #     registry-url: 'https://registry.npmjs.org'
 
-      # pnpm run get
-      - name: Build & Generate
-        run: |
-          pnpm run build
-          pnpm run generate
-          ls -lrth
+      # - name: Update package.json values
+      #   uses: restackio/update-json-values-action@v1.0.0
+      #   with:
+      #     file: package.json
+      #     values: '{"updateTime": "${{ env.CURRENT_TIME }}"}'
 
-      - name: Deploy to github-pages
-        uses: peaceiris/actions-gh-pages@v3
+      # - name: Setup PNPM
+      #   uses: pnpm/action-setup@v2
+      #   with:
+      #     version: 8
+      #     run_install: true
+
+      - name: Modify README.md
+        uses: jaywcjlove/github-action-modify-file-content@main
         with:
-          github_token: ${{ secrets.DEPLOY_TOKEN }}
-          publish_dir: ./.output/public
-          user_name: github-actions[bot]
-          user_email: github-actions[bot]@users.noreply.github.com
-      - name: Send Email
-        run: |
-          pnpm run send
+          path: README.md
+          body: '{{date:YYYY-MM-DD HH:mm:ss}}'
+
+    # pnpm run get
+    # - name: Build & Generate
+    #   run: |
+    #     pnpm run build
+    #     pnpm run generate
+    #     ls -lrth
+
+    # - name: Deploy to github-pages
+    #   uses: peaceiris/actions-gh-pages@v3
+    #   with:
+    #     github_token: ${{ secrets.DEPLOY_TOKEN }}
+    #     publish_dir: ./.output/public
+    #     user_name: github-actions[bot]
+    #     user_email: github-actions[bot]@users.noreply.github.com
+    # - name: Send Email
+    #   run: |
+    #     pnpm run send
