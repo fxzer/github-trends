@@ -10,6 +10,9 @@ on:
     - cron: '0 0,12 * * *'
 env:
   TZ: Asia/Shanghai # 设置时区：中国上海
+  QQ_EMAIL: ${{ secrets.QQ_EMAIL }}
+  WY_EMAIL: ${{ secrets.WY_EMAIL }}
+  QQ_EMAIL_AUTH: ${{ secrets.QQ_EMAIL_AUTH }}
 
 jobs:
   build-deploy:
@@ -65,3 +68,6 @@ jobs:
           publish_dir: ./.output/public
           user_name: github-actions[bot]
           user_email: github-actions[bot]@users.noreply.github.com
+      - name: Send Email
+        run: |
+          pnpm run send

@@ -11,6 +11,7 @@
     "dev": "nuxt dev",
     "test": "vitest",
     "get": "esno ./scripts/index.ts",
+    "send": "esno ./scripts/sendEmail.ts",
     "build": "nuxt build",
     "generate": "nuxt generate",
     "vercel": "nuxt build && nuxt generate --vercel",
@@ -30,6 +31,7 @@
     "axios": "^1.6.2",
     "dayjs": "^1.11.10",
     "echarts": "^5.4.3",
+    "nodemailer": "^6.9.7",
     "octokit": "^3.1.2",
     "sass": "^1.69.5"
   },
@@ -39,6 +41,7 @@
     "@nuxt/devtools": "^1.0.3",
     "@types/fs-extra": "^11.0.4",
     "@types/node": "^18.18.13",
+    "@types/nodemailer": "^6.4.14",
     "@unocss/eslint-config": "^0.57.7",
     "@unocss/nuxt": "^0.51.13",
     "@unocss/preset-rem-to-px": "^0.51.13",
