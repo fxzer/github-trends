@@ -13,7 +13,7 @@ const routes = [
 </script>
 
 <template>
-  <nav class="flex-between-center border-b border-gray/25 py-4 dark:text-white">
+  <nav class="relative flex-between-center border-b border-gray/25 py-4 dark:text-white">
     <img src="/logo.svg" alt="logo" class="md:wh-10 wh-8">
     <div class="text-xl font-bold space-x-4 sm:text-2xl sm:space-x-6">
       <NuxtLink v-for="(item, idx) in routes" :key="idx" :to="item.path" :class="isActive(item.path)">

@@ -74,10 +74,10 @@ export function useEcharts(
     chart?.dispose()
   }
 
-  // function updateTheme() {
-  //   destroy()
-  //   render()
-  // }
+  function updateTheme() {
+    destroy()
+    render()
+  }
 
   const scope = effectScope()
 
@@ -106,12 +106,12 @@ export function useEcharts(
       { deep: true },
     )
 
-    // watch(
-    //   isDark,
-    //   () => {
-    //     updateTheme()
-    //   },
-    // )
+    watch(
+      isDark,
+      () => {
+        updateTheme()
+      },
+    )
   })
 
   onScopeDispose(() => {

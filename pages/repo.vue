@@ -12,15 +12,14 @@ const view = ref<'list' | 'chart'>('list')
 </script>
 
 <template>
-  <div class="space-y-4">
-    <div class="flex items-center justify-around">
-      <slot name="date-range" />
+  <div>
+    <FilterWrap>
       <Language v-model="language" />
       <Views v-model="view" />
-    </div>
-    <template v-if="view === 'list'">
+    </FilterWrap>
+    <div v-if="view === 'list'" class="space-y-3">
       <Repo v-for="(item, index) in repoList" :key="index" class="repo-item" :index="index" :repo="item" :color="langColors[language]" />
-    </template>
+    </div>
     <RepoChart v-else-if="view === 'chart'" :data="repoList" />
   </div>
 </template>

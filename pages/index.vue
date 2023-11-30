@@ -16,15 +16,15 @@ watch([dateRange, language], () => {
 </script>
 
 <template>
-  <div class="space-y-4">
-    <div class="flex items-center justify-around">
+  <div>
+    <FilterWrap>
       <DateRange v-model="dateRange" />
       <Language v-model="language" />
       <Views v-model="view" :show-starup="true" />
-    </div>
-    <template v-if="view === 'list'">
+    </FilterWrap>
+    <div v-if="view === 'list'" class="space-y-3">
       <TrendRepo v-for="(item, index) in currentData" :key="index" class="repo-item" :index="index" :repo="item" :color="langColors[language]" />
-    </template>
+    </div>
     <TrendChart v-else-if="view === 'chart'" :data="currentData" />
     <TrendStarupChart v-else :data="currentData" />
   </div>

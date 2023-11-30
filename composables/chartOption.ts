@@ -8,14 +8,14 @@ export function useChartOptions(title: string, series: any[] = []) {
     legend: {
       data: legendData,
       // 位置
-      left: 'right',
+      right: 20,
       top: 'top',
     },
     grid: {
-      left: 80,
-      right: 0,
+      left: 0,
+      right: 20,
       bottom: 20,
-      top: 30,
+      top: 40,
       containLabel: true,
     },
     tooltip: {

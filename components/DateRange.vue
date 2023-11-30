@@ -10,7 +10,7 @@ const range = useVModel(props, 'modelValue', emit)
 </script>
 
 <template>
-  <el-radio-group v-model="range">
+  <el-radio-group v-model="range" size="small">
     <el-radio-button v-for="item in DATE_RANGE_LIST" :key="item.value" :label="item.value">
       {{ item.label }}
     </el-radio-button>

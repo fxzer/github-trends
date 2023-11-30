@@ -12,15 +12,15 @@ const view = ref<'list' | 'chart'>('list')
 
 <template>
   <div>
-    <div class="w-full flex-around-center">
-      <el-radio-group v-model="userRange">
+    <FilterWrap>
+      <el-radio-group v-model="userRange" size="small">
         <el-radio-button v-for="item in USER_RANGES" :key="item.value" :label="item.value">
           {{ item.label }}
         </el-radio-button>
       </el-radio-group>
       <Views v-model="view" />
-    </div>
-    <div v-if="view === 'list'" class="grid grid-cols-2 my-2 gap-2">
+    </FilterWrap>
+    <div v-if="view === 'list'" class="grid my-2 gap-2 md:grid-cols-2 xl:grid-cols-3">
       <User v-for="(user, index) in userList" :key="index" :user="user" />
     </div>
     <UserChart v-else-if="view === 'chart'" :data="userList" />
