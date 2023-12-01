@@ -2,7 +2,7 @@ import process from 'node:process'
 import { Octokit } from 'octokit'
 
 export const octokit = new Octokit({
-  auth: process.env.GITHUB_TRENDS_TOKEN || '',
+  auth: process.env.ACCESS_TOKEN || '',
 })
 
 export async function orequest(...args: any[]) {

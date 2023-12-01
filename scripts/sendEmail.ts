@@ -3,7 +3,6 @@ import nodemailer from 'nodemailer'
 import fs from 'fs-extra'
 
 const { QQ_EMAIL, WY_EMAIL, QQ_EMAIL_AUTH } = process.env
-console.log('[ process.env ]-5', process.env)
 console.log('[ QQ_EMAIL, WY_EMAIL, QQ_EMAIL_AUTH ]-5', QQ_EMAIL, WY_EMAIL, QQ_EMAIL_AUTH)
 const transporter = nodemailer.createTransport({
   host: 'smtp.qq.com',

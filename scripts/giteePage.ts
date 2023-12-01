@@ -13,7 +13,7 @@ const GITEE_HOME = 'https://gitee.com/'
 const GITEE_LOGIN = 'https://gitee.com/login'
 const GITEE_PAGES = 'https://gitee.com/fxzer/github-trends/pages'
 const GITEE_PAGES_URL = 'https://fxzer.gitee.io/github-trends'
-const delay = ms => new Promise(res => setTimeout(res, ms))
+const delay = (ms: number = 100) => new Promise(res => setTimeout(res, ms))
 
 async function giteeUpdate() {
   const browser = await puppeteer.launch({
@@ -26,14 +26,14 @@ async function giteeUpdate() {
     deviceScaleFactor: 1,
   })
   /* 获取输入框，并自动输入 */
-  async function autoInput(selector, text) {
+  async function autoInput(selector: string, text: string) {
     const inputEl = await page.waitForSelector(selector)
-    await inputEl.type(text)
+    await inputEl?.type(text)
   }
   /* 自动点击 */
-  async function autoClick(selector) {
+  async function autoClick(selector: string) {
     const btn = await page.waitForSelector(selector)
-    await btn.click()
+    await btn?.click()
   }
   //  1. 打开gitee登录页面
   await page.goto(GITEE_LOGIN)
@@ -64,7 +64,7 @@ async function giteeUpdate() {
     await delay(waitTimer)
     // 使用 isVisible 方法检查元素是否可见
     const loading = await page.waitForSelector('.pages_message_loading')
-    const isVisible = await loading.isVisible()
+    const isVisible = await loading?.isVisible()
     updateTimes = (updateTimes + waitTimer) / 1000
 
     if (!isVisible) {

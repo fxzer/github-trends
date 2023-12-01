@@ -11,6 +11,7 @@ export async function getTrendData() {
       const html = await getTrendsHtml(lang, range.value)
       const trends = await parseTrendsHtml(html.data)
       allTrends[`${lang}-${range.value}`] = trends
+      console.log(`===> ${lang}-${range}-[${trends.length}条]- 项目数据获取完成 <===`)
     }
   }
   await saveData(allTrends, `trending.js`)

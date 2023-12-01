@@ -2,7 +2,6 @@ import { USER_RANGES } from '../utils'
 import { saveData } from './saveData'
 import { orequest } from './octokit'
 
-const USRE_COUNT = 100 /** 每个范围获取的总人数 */
 export async function getUserInfo(username: string) {
   return await orequest(`GET /users/${username}`)
 }
@@ -11,7 +10,7 @@ export async function getUsers(page: number, isChina?: boolean) {
     q: `followers:>1000${isChina ? '+location:China' : ''}`,
     sort: 'followers',
     page,
-    per_page: 10,
+    per_page: 100,
   })
   return dt.items || []
 }
@@ -20,7 +19,7 @@ export async function getUsersData() {
   const allUsers: any = { }
   for (const range of USER_RANGES.map(i => i.value)) {
     const users = []
-    for (let i = 1; i <= USRE_COUNT / 10; i++) {
+    for (let i = 1; i <= 1; i++) {
       const dt = await getUsers(i, range === 'China')
       if (dt && dt.length)
         users.push(...dt)
@@ -31,6 +30,7 @@ export async function getUsersData() {
       Object.assign(user, userInfo)
     }
     allUsers[range] = users
+    console.log(`===> ${range}-[${users.length}条]- 用户数据获取完成 <===`)
   }
   await saveData(allUsers, `users.js`)
 }

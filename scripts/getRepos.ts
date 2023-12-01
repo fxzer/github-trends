@@ -1,22 +1,16 @@
-import process from 'node:process'
-import { request } from '@octokit/request'
+import { orequest } from './octokit'
 import { saveData } from './saveData'
 
-const REPO_COUNT = 100 /** 每个语言获取的总仓库数 */
 export async function getRepos(lang: string, page: number) {
-  const headers: { authorization?: string } = {}
-  if (process.env.GITHUB_TRENDS_TOKEN)
-    headers.authorization = `token ${process.env.GITHUB_TRENDS_TOKEN}`
   try {
-    const dt = await request(`GET /search/repositories`, {
-      ...{ headers },
+    const dt = await orequest(`GET /search/repositories`, {
       q: `stars:>2000 language:${lang}`,
       sort: 'stars',
       page,
-      per_page: 10,
+      per_page: 100,
     })
     if (dt && dt.data && dt.data.items)
-      return dt.data.items.map(repo => ({ ...repo, stars: repo.stargazers_count }))
+      return dt.data.items.map((repo: any) => ({ ...repo, stars: repo.stargazers_count }))
   }
   catch (error) {
     if (error instanceof Error)
@@ -24,18 +18,18 @@ export async function getRepos(lang: string, page: number) {
   }
 }
 
-/** 获取 1000条 */
 export async function getReposData() {
   const languages = ['JavaScript', 'TypeScript', 'Vue']
   const allRepos: any = { }
   for (const lang of languages) {
     const langRepos = []
-    for (let i = 1; i <= REPO_COUNT / 10; i++) {
+    for (let i = 1; i <= 1; i++) {
       const dt = await getRepos(lang, i)
       if (dt && dt.length)
         langRepos.push(...dt)
     }
     allRepos[lang] = langRepos
+    console.log(`===> ${lang}-[${langRepos.length}条]- 仓库数据获取完成 <===`)
   }
   await saveData(allRepos, `repos.js`)
 }

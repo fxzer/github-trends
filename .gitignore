@@ -10,3 +10,4 @@ dist
 package-lock.json
 .idea
 pnpm-lock.yaml
+node_modules

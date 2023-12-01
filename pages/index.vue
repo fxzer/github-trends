@@ -30,7 +30,7 @@ watch([dateRange, language], () => {
         <template #icons="{ repo }">
           <IconText title="starup" icon-name="ph:star-half-bold" :text="repo.starup" text-red-500 />
         </template>
-        <template #trendsvg="{ repo }">
+        <!-- <template #trendsvg="{ repo }">
           <div hidden lg="block h-20 w-50">
             <el-image
               lazy
@@ -44,7 +44,7 @@ watch([dateRange, language], () => {
               fit="cover"
             />
           </div>
-        </template>
+        </template> -->
       </RepoItem>
     </div>
     <TrendChart v-else-if="view === 'chart'" :data="currentData" />
