@@ -22,8 +22,30 @@ watch([dateRange, language], () => {
       <Language v-model="language" />
       <Views v-model="view" :show-starup="true" />
     </FilterWrap>
-    <div v-if="view === 'list'" class="space-y-3">
-      <TrendRepo v-for="(item, index) in currentData" :key="index" class="repo-item" :index="index" :repo="item" :color="langColors[language]" />
+    <div v-if="view === 'list'" space-y-3>
+      <RepoItem v-for="(item, index) in currentData" :key="index" :index="index" :repo="item">
+        <template #title="{ repo }">
+          <RepoTitle :color="langColors[language]" :owner="repo.owner" :name="repo.name" />
+        </template>
+        <template #icons="{ repo }">
+          <IconText title="starup" icon-name="ph:star-half-bold" :text="repo.starup" text-red-500 />
+        </template>
+        <template #trendsvg="{ repo }">
+          <div hidden lg="block h-20 w-50">
+            <el-image
+              lazy
+              wh-full
+              :src="`https://starchart.cc${repo.path}.svg`"
+              :zoom-rate="1.2"
+              :max-scale="4"
+              :min-scale="0.5"
+              :preview-src-list="[`https://starchart.cc${repo.path}.svg`]"
+              :initial-index="40"
+              fit="cover"
+            />
+          </div>
+        </template>
+      </RepoItem>
     </div>
     <TrendChart v-else-if="view === 'chart'" :data="currentData" />
     <TrendStarupChart v-else :data="currentData" />

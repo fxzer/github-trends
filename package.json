@@ -14,6 +14,7 @@
     "build": "nuxt build",
     "generate": "nuxt generate",
     "vercel": "nuxt build && nuxt generate --vercel",
+    "pb:gitee": "zsh deploy.sh && esno scripts/giteePage.ts",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare",
     "lint": "eslint .",

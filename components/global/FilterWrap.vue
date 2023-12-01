@@ -3,8 +3,8 @@
 </script>
 
 <template>
-  <div class="text-2xl font-bold">
-    the global title work!
+  <div gap-3 py-4 flex="between-center wrap">
+    <slot />
   </div>
 </template>
 

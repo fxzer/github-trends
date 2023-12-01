@@ -1,18 +1,18 @@
 <script setup lang='ts'>
-import { LANGUAGE_LIST } from '~/utils'
+import { DATE_RANGE_LIST } from '~/utils'
 
 const props = defineProps<{
   modelValue: string
 }>()
 const emit = defineEmits(['update:modelValue'])
 
-const language = useVModel(props, 'modelValue', emit)
+const range = useVModel(props, 'modelValue', emit)
 </script>
 
 <template>
-  <el-radio-group v-model="language" size="small">
-    <el-radio-button v-for="item in LANGUAGE_LIST" :key="item" :label="item">
-      {{ item }}
+  <el-radio-group v-model="range">
+    <el-radio-button v-for="item in DATE_RANGE_LIST" :key="item.value" :label="item.value">
+      {{ item.label }}
     </el-radio-button>
   </el-radio-group>
 </template>

@@ -1,5 +1,5 @@
 <script setup lang='ts'>
-import { type Language, type Repo, langColors } from '../utils'
+import { type Language, langColors } from '../utils'
 import dataMap from '~/data/repos.js'
 
 const repoList = ref<any[]>([])
@@ -17,8 +17,16 @@ const view = ref<'list' | 'chart'>('list')
       <Language v-model="language" />
       <Views v-model="view" />
     </FilterWrap>
-    <div v-if="view === 'list'" class="space-y-3">
-      <Repo v-for="(item, index) in repoList" :key="index" class="repo-item" :index="index" :repo="item" :color="langColors[language]" />
+    <div v-if="view === 'list'" space-y-3>
+      <RepoItem v-for="(item, index) in repoList" :key="index" :index="index" :repo="item" :color="langColors[language]">
+        <template #title="{ repo }">
+          <RepoTitle :color="langColors[language]" :owner="repo.owner.login" :name="repo.name" />
+        </template>
+        <template #icons="{ repo }">
+          <IconText title="size" icon-name="fluent:table-resize-column-24-regular" :text="formatSize(repo.size)" />
+          <IconText title="wathcer" icon-name="solar:eye-outline" :text="repo.watchers" />
+        </template>
+      </RepoItem>
     </div>
     <RepoChart v-else-if="view === 'chart'" :data="repoList" />
   </div>
