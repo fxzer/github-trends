@@ -7,14 +7,13 @@ on:
       - LICENSE
       - README.md
   schedule:
-    - cron: '30 4,16 * * *'
+    - cron: '0 4,16 * * *' # 每天中国时间 12:00 和 00:00 触发
 env:
   TZ: Asia/Shanghai # 设置时区：中国上海
   QQ_EMAIL: ${{ secrets.QQ_EMAIL }} # 用于发送邮件
   WY_EMAIL: ${{ secrets.WY_EMAIL }}
   QQ_EMAIL_AUTH: ${{ secrets.QQ_EMAIL_AUTH }}
   ACCESS_TOKEN: ${{ secrets.DEPLOY_TOKEN }} # 用于部署到 Github Pages,取 Github 数据
-  # SSH_PRIVATE_KEY: ${{ secrets.GITEE_RSA_PRIVATE_KEY }}
 jobs:
   build-deploy:
     runs-on: ubuntu-latest
@@ -75,4 +74,4 @@ jobs:
 
       - name: Send Email
         run: |
-          pnpm gitee
+          pnpm send
