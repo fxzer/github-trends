@@ -9,7 +9,7 @@
   "scripts": {
     "dev": "nuxt dev",
     "test": "vitest",
-    "get": "esno ./scripts/index.ts",
+    "update:data": "esno ./scripts/index.ts",
     "send": "esno ./scripts/sendEmail.ts",
     "build": "nuxt build",
     "generate": "nuxt generate",

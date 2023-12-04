@@ -1,4 +1,4 @@
-name: Build & Deploy
+name: Build & Deploy & Sync Gitee & Send Email
 on:
   push:
     branches:
@@ -7,7 +7,7 @@ on:
       - LICENSE
       - README.md
   schedule:
-    - cron: '0 4,16 * * *' # 每天中国时间 12:00 和 00:00 触发
+    - cron: '38 3,15 * * *' # 每天中国北京时间 12:00 和 00:00 触发
 env:
   TZ: Asia/Shanghai # 设置时区：中国上海
   QQ_EMAIL: ${{ secrets.QQ_EMAIL }} # 用于发送邮件
@@ -42,16 +42,23 @@ jobs:
           version: 8
           run_install: true
 
-          # pnpm get
       - name: Update Github Data
         run: |
-          ls -lrth
+          pnpm update:data
           git status
 
       - name: Build & Generate
         run: |
           pnpm build
           pnpm generate
+
+      - name: Deploy to github-pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.DEPLOY_TOKEN }}
+          publish_dir: ./.output/public
+          user_name: github-actions[bot]
+          user_email: github-actions[bot]@users.noreply.github.com
 
       - name: Sync to Gitee
         uses: wearerequired/git-mirror-action@master
@@ -63,14 +70,6 @@ jobs:
           source-repo: git@github.com:fxzer/github-trends.git
           # 注意替换为你的 Gitee 目标仓库地址
           destination-repo: git@gitee.com:fxzer/github-trends.git
-
-      - name: Deploy to github-pages
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          github_token: ${{ secrets.DEPLOY_TOKEN }}
-          publish_dir: ./.output/public
-          user_name: github-actions[bot]
-          user_email: github-actions[bot]@users.noreply.github.com
 
       - name: Send Email
         run: |

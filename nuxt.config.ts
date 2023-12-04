@@ -29,9 +29,9 @@ export default defineNuxtConfig({
     },
   },
   app: {
-    baseURL: isVercel ? '/' : '/github-trends/', /* 根据 */
+    baseURL: isVercel ? '/' : '/github-trends/', /* 根据环境决定路由前缀 */
     head: {
-      title: 'github-trends',
+      title: 'Github Trends',
       meta: [
         {
           name: 'viewport',
@@ -39,12 +39,12 @@ export default defineNuxtConfig({
         },
         {
           name: 'keywords',
-          content: 'github-trends',
+          content: 'github、trending、chart 、github-trends',
         },
         {
           name: 'description',
           content:
-            'github-trends',
+            'Github 趋势一览',
         },
         {
           charset: 'utf-8',
@@ -55,15 +55,17 @@ export default defineNuxtConfig({
         {
           hid: 'icon',
           rel: 'icon',
-          href: '/logo.ico',
+          href: '/favicon.ico',
         },
         {
           hid: 'icon',
           rel: 'icon',
-          href: '/logo.svg',
+          href: '/favicon.svg',
         },
         // 网址规范化
         { rel: 'canonical', href: 'https://github-trends-neon.vercel.app' },
+        { rel: 'canonical', href: 'https://fxzer.github.io/github-trends' },
+        { rel: 'canonical', href: 'https://fxzer.gitee.io/github-trends' },
       ],
       script: [],
     },
