@@ -1,7 +1,6 @@
 // #! /usr/bin/env node
 import process from 'node:process'
 import puppeteer from 'puppeteer'
-import { saveUpdateTime } from './updateTime'
 
 /**
    在 ~/.zshrc 中配置环境变量（保护隐私）  例如：
@@ -78,4 +77,3 @@ async function giteeUpdate() {
   browser.close()
 }
 giteeUpdate()
-saveUpdateTime()

@@ -15,7 +15,7 @@ defineProps(['user'])
       <div flex gap-3>
         <IconText icon-name="ph:users-four" title="粉丝数量" :text="user.followers" text-pink-500 />
         <IconText icon-name="teenyicons:git-outline" title="仓库数量" :text="user.public_repos" text-violet-500 />
-        <IconText icon-name="ic:outline-update" title="最近更新" :text="dayjs(user.updated_at).fromNow() " text-violet-500 />
+        <IconText icon-name="ic:outline-update" title="最近更新" :text="dayjs(user.updated_at).fromNow() " text-green-500 />
       </div>
       <div gap-3 text="slate-500 lt-md:xs" flex="~ wrap">
         <IconText icon-name="ph:buildings-bold" title="公司" :text="user.company" />

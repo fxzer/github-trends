@@ -1,16 +1,21 @@
-import { orequest } from './octokit'
+import process from 'node:process'
+import { request } from '@octokit/request'
 import { saveData } from './saveData'
 
 export async function getRepos(lang: string, page: number) {
+  const headers: { authorization?: string } = {}
+  if (process.env.GITHUB_TRENDS_TOKEN)
+    headers.authorization = `token ${process.env.GITHUB_TRENDS_TOKEN}`
   try {
-    const dt = await orequest(`GET /search/repositories`, {
+    const dt = await request(`GET /search/repositories`, {
+      ...{ headers },
       q: `stars:>2000 language:${lang}`,
       sort: 'stars',
       page,
       per_page: 100,
     })
     if (dt && dt.data && dt.data.items)
-      return dt.data.items.map((repo: any) => ({ ...repo, stars: repo.stargazers_count }))
+      return dt.data.items.map(repo => ({ ...repo, stars: repo.stargazers_count }))
   }
   catch (error) {
     if (error instanceof Error)
@@ -18,6 +23,7 @@ export async function getRepos(lang: string, page: number) {
   }
 }
 
+/** 获取 1000条 */
 export async function getReposData() {
   const languages = ['JavaScript', 'TypeScript', 'Vue']
   const allRepos: any = { }
