@@ -24,13 +24,8 @@ export default defineConfig({
       '-webkit-line-clamp': d,
       'overflow': 'hidden',
     })],
-    [/^sd-(\d+)-(\d+)$/, ([, d, a]) => ({
-      'box-shadow': `0 0 ${d}px rgba(0, 0, 0, 0.${a})`,
-    })],
   ],
   theme: {
-    colors: {
-    },
   },
   presets: [
     presetUno(),

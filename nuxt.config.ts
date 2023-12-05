@@ -55,12 +55,12 @@ export default defineNuxtConfig({
         {
           hid: 'icon',
           rel: 'icon',
-          href: '/favicon.ico',
+          href: '/github-trends/favicon.ico',
         },
         {
           hid: 'icon',
           rel: 'icon',
-          href: '/favicon.svg',
+          href: '/github-trends/favicon.svg',
         },
         // 网址规范化
         { rel: 'canonical', href: 'https://github-trends-neon.vercel.app' },
