@@ -62,6 +62,11 @@ export default defineNuxtConfig({
           rel: 'icon',
           href: '/github-trends/favicon.svg',
         },
+        {
+          rel: 'apple-touch-icon',
+          sizes: '180x180',
+          href: '/github-trends/favicon.svg',
+        },
         // 网址规范化
         { rel: 'canonical', href: 'https://github-trends-neon.vercel.app' },
         { rel: 'canonical', href: 'https://fxzer.github.io/github-trends' },
