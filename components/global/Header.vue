@@ -11,6 +11,11 @@ const routes = [
   { path: '/repo', text: '仓库' },
   { path: '/user', text: '用户' },
 ]
+useInterval(() => {
+  const updateTimeMs = new Date(updateTime).getTime()
+  if (new Date().getTime() - updateTimeMs > 12 * 60 * 60 * 1000)
+    window.location.reload()
+}, 1000)
 </script>
 
 <template>
