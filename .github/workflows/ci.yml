@@ -23,9 +23,7 @@ jobs:
           sudo timedatectl set-timezone "$TZ"
           echo "当前时区： $TZ"
           echo "当前时间： $(date +"%Y-%m-%d %H:%M:%S")"
-
-      - name: Set current time
-        run: echo "CURRENT_TIME=$(date +"%Y-%m-%d %H:%M:%S")" >> $GITHUB_ENV
+          echo "CURRENT_TIME=$(date +"%Y-%m-%d %H:%M:%S")" >> $GITHUB_ENV
 
       - name: Checkout code
         uses: actions/checkout@v3
@@ -33,8 +31,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: 18
-          registry-url: 'https://registry.npmjs.org'
+          node-version: lts/*
 
       - name: Setup PNPM
         uses: pnpm/action-setup@v2
@@ -42,15 +39,21 @@ jobs:
           version: 8
           run_install: true
 
+      - name: Install ni
+        run: pnpm i -g @antfu/ni
+
+      - name: Install deps
+        run: nci
+
       - name: Update Github Data
         run: |
-          pnpm update:data
+          nr update:data
           git status
 
       - name: Build & Generate
         run: |
-          pnpm build
-          pnpm generate
+          nr build
+          nr generate
 
       - name: Deploy to github-pages
         uses: peaceiris/actions-gh-pages@v3
@@ -85,4 +88,4 @@ jobs:
 
       - name: Send Email
         run: |
-          pnpm send
+          nr send
