@@ -11,16 +11,10 @@ const routes = [
   { path: '/repo', text: '仓库' },
   { path: '/user', text: '用户' },
 ]
-useInterval(() => {
-  const updateTimeMs = new Date(updateTime).getTime()
-  if (new Date().getTime() - updateTimeMs > 12 * 60 * 60 * 1000)
-    window.location.reload()
-}, 1000)
 </script>
 
 <template>
   <header flex-between-center py-4 text="center dark:white" border="b gray/40">
-    <!-- <div class=""> -->
     <img src="/favicon.svg" alt="logo" wh="8 md:10">
     <div class="relative">
       <nav flex-between-center gap-5 font-bold md:gap-10 text="xl sm:2xl">
@@ -45,6 +39,5 @@ useInterval(() => {
         <Icon name="simple-icons:gitee" color="#D90713" md:wh-6 scale-110 />
       </a>
     </div>
-    <!-- </div> -->
   </header>
 </template>
