@@ -22,8 +22,11 @@ watch([dateRange, language], () => {
       <Language v-model="language" />
       <Views v-model="view" :show-starup="true" />
     </FilterWrap>
-    <div v-if="view === 'list'" space-y-3>
+    <div v-if="view === 'list'" grid="~ lg:cols-2 gap-2">
       <RepoItem v-for="(item, index) in currentData" :key="index" :index="index" :repo="item">
+        <template #avatar="{ repo }">
+          <el-avatar :size="50" :src="repo.avatar" self-center />
+        </template>
         <template #title="{ repo }">
           <RepoTitle :color="langColors[language]" :owner="repo.owner" :name="repo.name" />
         </template>

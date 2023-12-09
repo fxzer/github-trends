@@ -17,8 +17,11 @@ const view = ref<'list' | 'chart'>('list')
       <Language v-model="language" />
       <Views v-model="view" />
     </FilterWrap>
-    <div v-if="view === 'list'" space-y-3>
+    <div v-if="view === 'list'" grid="~ lg:cols-2 gap-2">
       <RepoItem v-for="(item, index) in repoList" :key="index" :index="index" :repo="item" :color="langColors[language]">
+        <template #avatar="{ repo }">
+          <el-avatar :size="50" :src="repo.owner.avatar_url" self-center />
+        </template>
         <template #title="{ repo }">
           <RepoTitle :color="langColors[language]" :owner="repo.owner.login" :name="repo.name" />
         </template>

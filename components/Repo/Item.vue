@@ -6,8 +6,9 @@ defineProps<{
 </script>
 
 <template>
-  <div flex overflow-hidden rounded-md p-1 space-x="2 md:4" border="~ gray/40 hover:blue">
+  <div relative flex overflow-hidden rounded-md p="x-2 y-1" space-x="2 md:4" border="~ gray/40 hover:blue">
     <RepoNum :index="index" />
+    <slot name="avatar" :repo="repo" />
     <div min-w-0 flex-1>
       <div>
         <slot :repo="repo" name="title" />
