@@ -21,7 +21,7 @@ const view = ref<'list' | 'chart'>('list')
       <Views v-model="view" />
     </FilterWrap>
     <div v-if="view === 'list'" grid="~ md:cols-2 xl:cols-3 gap-2">
-      <User v-for="(user, index) in userList" :key="index" :user="user" />
+      <User v-for="(user, index) in userList" :key="index" :user="user" :index="index" />
     </div>
     <UserChart v-else-if="view === 'chart'" :data="userList" />
   </div>
