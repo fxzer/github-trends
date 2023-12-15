@@ -29,7 +29,7 @@ function parseTrendsHtml(html: string) {
     const title = $(el).find('.h3 a').text().trim()
     const owner = $(el).find('.h3.lh-condensed a .text-normal').text().split('/')[0].trim()
     const name = $(el).find('.h3.lh-condensed a').text().split('/')[1].trim()
-    const avatar = $(el).find('.color-fg-muted a.d-inline-block img.avatar-user')[0].attribs.src
+    const avatar = $(el).find('.color-fg-muted a.d-inline-block img.avatar-user')[0]?.attribs?.src || ''
     const path = $(el).find('.h3 a').attr('href')
     const link = path ? `https://github.com${path}` : ''
     const description = $(el).find('p.col-9.color-fg-muted.my-1.pr-4').text().trim()
