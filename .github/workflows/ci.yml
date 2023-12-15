@@ -50,9 +50,8 @@ jobs:
           nr update:data
           git status
 
-      - name: Build & Generate
+      - name: Generate
         run: |
-          nr build
           nr generate
 
       - name: Deploy to github-pages
