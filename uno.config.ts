@@ -26,6 +26,9 @@ export default defineConfig({
     })],
   ],
   theme: {
+    colors: {
+      primary: '#44c089',
+    },
   },
   presets: [
     presetUno(),

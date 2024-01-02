@@ -4,7 +4,7 @@ import { updateTime } from '~/data/updateTime'
 const isDark = useDark()
 const route = useRoute()
 function isActive(path) {
-  return route.path === path ? 'text-green-500' : ''
+  return route.path === path ? 'text-primary' : ''
 }
 const routes = [
   { path: '/', text: '趋势' },

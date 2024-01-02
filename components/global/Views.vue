@@ -15,7 +15,7 @@ const viewMapAll = computed(() => props.showStarup ? { ...viewsMap, 'starup-char
 <template>
   <div flex cursor-pointer space-x-2 dark:text-zinc-300>
     <template v-for="(value, key) in viewMapAll" :key="key">
-      <Icon :name="value" scale-122 :class="view === key ? 'text-lime-500' : ''" @click="view = key" />
+      <Icon :name="value" scale-122 :class="view === key ? 'text-primary' : ''" @click="view = key" />
     </template>
   </div>
 </template>

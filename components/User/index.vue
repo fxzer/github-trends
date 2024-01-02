@@ -5,7 +5,7 @@ defineProps(['user', 'index'])
 </script>
 
 <template>
-  <div relative overflow-hidden rounded-md p2 flex="~ items-center" border="~ dark:gray-600/80 hover:blue">
+  <div relative overflow-hidden rounded-md p2 flex="~ items-center" border="~ dark:gray-600/80 hover:primary">
     <OrderNum :index="index" />
     <img :src="user.avatar_url" mr-2 rounded-full wh="13 md:15">
     <div min-w-0 space-y-1>
