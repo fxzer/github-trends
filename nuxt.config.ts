@@ -11,6 +11,7 @@ export default defineNuxtConfig({
     '@unocss/nuxt',
     '@vueuse/nuxt',
     'nuxt-icon',
+    '@nuxtjs/sitemap',
     '@element-plus/nuxt',
   ],
   elementPlus: {
@@ -27,6 +28,9 @@ export default defineNuxtConfig({
       crawlLinks: true,
       routes: ['/'],
     },
+  },
+  site: {
+    url: 'https://fxzer.gitee.io',
   },
   app: {
     baseURL: isVercel ? '/' : '/github-trends/', /* 根据环境决定路由前缀 */

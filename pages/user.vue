@@ -13,8 +13,8 @@ const view = ref<'list' | 'chart'>('list')
 <template>
   <div>
     <FilterWrap>
-      <el-radio-group v-model="userRange">
-        <el-radio-button v-for="item in USER_RANGES" :key="item.value" :label="item.value">
+      <el-radio-group v-model="userRange" style="--el-color-primary: #44c089">
+        <el-radio-button v-for="item in USER_RANGES" :key="item.value" :value="item.value">
           {{ item.label }}
         </el-radio-button>
       </el-radio-group>

@@ -11,7 +11,7 @@ const language = useVModel(props, 'modelValue', emit)
 
 <template>
   <el-radio-group v-model="language" style="--el-color-primary: #44c089">
-    <el-radio-button v-for="item in LANGUAGE_LIST" :key="item" :label="item">
+    <el-radio-button v-for="item in LANGUAGE_LIST" :key="item" :value="item">
       {{ item }}
     </el-radio-button>
   </el-radio-group>

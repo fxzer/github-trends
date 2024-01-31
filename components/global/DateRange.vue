@@ -11,7 +11,7 @@ const range = useVModel(props, 'modelValue', emit)
 
 <template>
   <el-radio-group v-model="range" style="--el-color-primary: #44c089">
-    <el-radio-button v-for="item in DATE_RANGE_LIST" :key="item.value" :label="item.value">
+    <el-radio-button v-for="item in DATE_RANGE_LIST" :key="item.value" :value="item.value">
       {{ item.label }}
     </el-radio-button>
   </el-radio-group>

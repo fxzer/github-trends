@@ -7,13 +7,18 @@
 3. UnoCss
 
 ## 效果展示
-[![piyRnsS.png](https://z1.ax1x.com/2023/12/04/piyRnsS.png)](https://imgse.com/i/piyRNsU)
-[![piyRQaj.png](https://z1.ax1x.com/2023/12/04/piyRQaj.png)](https://imgse.com/i/piyRtMT)
-[![piyRsRx.png](https://z1.ax1x.com/2023/12/04/piyRsRx.png)](https://imgse.com/i/piyRsRx)
+![trend](./public/imgs/trend-light-dark.png)
+
+![repo](./public/imgs/repo-light-dark.png)
+
+![user](./public/imgs/user-light-dark.png)
+
+![chart](./public/imgs/chart-light-dark.png)
+
 ## 安装依赖
 
 ```bash
-# pnpm 
+# pnpm
 pnpm install
 ```
 
@@ -26,7 +31,6 @@ pnpm dev
 ```
 
 ## 打包构建
-
 
 ```bash
 pnpm  build

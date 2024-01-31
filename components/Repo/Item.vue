@@ -6,13 +6,13 @@ defineProps<{
 </script>
 
 <template>
-  <div relative flex overflow-hidden rounded-md p="x-2 y-1" space-x="2 md:4" border="~ gray/40 hover:primary">
+  <div relative flex overflow-hidden rounded-md p="x-2 y-1" space-x="2 md:4" border="~ gray/40 hover:primary"  v-slidein="100">
     <OrderNum :index="index" />
     <slot name="avatar" :repo="repo" />
     <div min-w-0 flex-1>
       <div>
         <slot :repo="repo" name="title" />
-        <p my-1 text="xs zinc" clamp="3 md:2">
+        <p my-1 text="xs zinc" clamp="3 md:2" min-h-4>
           {{ repo.description }}
         </p>
       </div>
