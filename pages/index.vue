@@ -22,17 +22,18 @@ watch([dateRange, language], () => {
       <Language v-model="language" />
       <Views v-model="view" :show-starup="true" />
     </FilterWrap>
-    <div v-if="view === 'list'" grid="~ lg:cols-2 gap-2">
-      <RepoItem v-for="(item, index) in currentData" :key="index" :index="index" :repo="item">
-        <template #avatar="{ repo }">
-          <el-avatar :size="50" :src="repo.avatar" self-center />
-        </template>
-        <template #title="{ repo }">
-          <RepoTitle :color="langColors[language]" :owner="repo.owner" :name="repo.name" />
-        </template>
-        <template #icons="{ repo }">
-          <IconText title="starup" icon-name="ph:star-half-bold" :text="repo.starup" text-red-500 />
-        </template>
+    <Transition name="fade-top" mode="out-in">
+      <div v-if="view === 'list'" grid="~ lg:cols-2 gap-2">
+        <RepoItem v-for="(item, index) in currentData" :key="index" :index="index" :repo="item">
+          <template #avatar="{ repo }">
+            <el-avatar :size="50" :src="repo.avatar" self-center />
+          </template>
+          <template #title="{ repo }">
+            <RepoTitle :color="langColors[language]" :owner="repo.owner" :name="repo.name" />
+          </template>
+          <template #icons="{ repo }">
+            <IconText title="starup" icon-name="ph:star-half-bold" :text="repo.starup" text-red-500 />
+          </template>
         <!-- <template #trendsvg="{ repo }">
           <div hidden lg="block h-20 w-50">
             <el-image
@@ -63,13 +64,10 @@ watch([dateRange, language], () => {
             />
           </div>
         </template> -->
-      </RepoItem>
-    </div>
-    <TrendChart v-else-if="view === 'chart'" :data="currentData" />
-    <TrendStarupChart v-else :data="currentData" />
+        </RepoItem>
+      </div>
+      <TrendChart v-else-if="view === 'chart'" :data="currentData" />
+      <TrendStarupChart v-else :data="currentData" />
+    </Transition>
   </div>
 </template>
-
-<style scoped lang='scss'>
-
-</style>

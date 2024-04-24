@@ -20,3 +20,19 @@ html.dark{
 .dark::view-transition-old(root) {
   z-index: 9999;
 }
+
+/* 向上滑动消退 */
+.fade-top-enter-active,
+.fade-top-leave-active {
+  transition:0.2s;
+}
+
+.fade-top-enter-from {
+  opacity: 0;
+  transform: translateY(8%);
+}
+
+.fade-top-leave-to {
+  opacity: 0;
+  transform: translateY(-8%);
+}
