@@ -16,7 +16,7 @@ export function toggleDarkAnimate(event: MouseEvent) {
     Math.max(y, innerHeight - y),
   )
   // @ts-expect-error: Transition API
-  const transition = document.startViewTransition(async () => {
+  const transition = document?.startViewTransition(async () => {
     toggleDark()
     await nextTick()
   })
@@ -25,7 +25,7 @@ export function toggleDarkAnimate(event: MouseEvent) {
       `circle(0px at ${x}px ${y}px)`,
       `circle(${endRadius}px at ${x}px ${y}px)`,
     ]
-    document.documentElement.animate(
+    document?.documentElement.animate(
       {
         clipPath: isDark.value
           ? [...clipPath].reverse()

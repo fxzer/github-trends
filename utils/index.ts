@@ -18,5 +18,5 @@ export function formatSize(size: number) {
 }
 
 export function setHtmlProperty(key: string, value: string) {
-  document.documentElement.style.setProperty(key, value)
+  document?.documentElement.style.setProperty(key, value)
 }

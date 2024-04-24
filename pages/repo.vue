@@ -23,7 +23,7 @@ const { onMouseEnter } = useMouseEnter()
         <div class="pointer absolute left-0 top-0 border-2 op0 transition-all duration-300" />
         <RepoItem v-for="(item, index) in repoList" :key="index" :index="index" :repo="item" :color="langColors[language]" @mouseenter="onMouseEnter">
           <template #avatar="{ repo }">
-            <el-avatar :size="50" :src="repo.owner.avatar_url" self-center />
+            <LazyImage :src="repo.owner.avatar_url" />
           </template>
           <template #title="{ repo }">
             <RepoTitle :color="langColors[language]" :owner="repo.owner.login" :name="repo.name" />
