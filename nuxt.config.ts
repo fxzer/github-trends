@@ -34,6 +34,10 @@ export default defineNuxtConfig({
   },
   app: {
     baseURL: isVercel ? '/' : '/github-trends/', /* 根据环境决定路由前缀 */
+    pageTransition: {
+      name: 'fade-slide',
+      mode: 'out-in',
+    },
     head: {
       title: 'Github Trends',
       meta: [
