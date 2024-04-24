@@ -9,6 +9,7 @@ watch([language], () => {
 }, { immediate: true })
 
 const view = ref<'list' | 'chart'>('list')
+const { onMouseEnter } = useMouseEnter()
 </script>
 
 <template>
@@ -19,7 +20,8 @@ const view = ref<'list' | 'chart'>('list')
     </FilterWrap>
     <Transition name="fade-top" mode="out-in">
       <div v-if="view === 'list'" grid="~ lg:cols-2 gap-2">
-        <RepoItem v-for="(item, index) in repoList" :key="index" :index="index" :repo="item" :color="langColors[language]">
+        <div class="pointer absolute left-0 top-0 border-2 op0 transition-all duration-300" />
+        <RepoItem v-for="(item, index) in repoList" :key="index" :index="index" :repo="item" :color="langColors[language]" @mouseenter="onMouseEnter">
           <template #avatar="{ repo }">
             <el-avatar :size="50" :src="repo.owner.avatar_url" self-center />
           </template>

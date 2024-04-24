@@ -16,3 +16,7 @@ export function formatSize(size: number) {
   else
     return `${(size / 1024 / 1024).toFixed(2)}GB`
 }
+
+export function setHtmlProperty(key: string, value: string) {
+  document.documentElement.style.setProperty(key, value)
+}

@@ -1,21 +1,26 @@
 @import '@unocss/reset/tailwind-compat.css';
-html.dark{
+
+html.dark {
   background: #111;
 }
+
 * {
   outline: none;
   box-sizing: border-box;
 }
+
 /* 暗黑模式切换动画 */
 ::view-transition-old(root),
 ::view-transition-new(root) {
   animation: none;
   mix-blend-mode: normal;
 }
+
 ::view-transition-old(root),
 .dark::view-transition-new(root) {
   z-index: 1;
 }
+
 ::view-transition-new(root),
 .dark::view-transition-old(root) {
   z-index: 9999;
@@ -24,7 +29,7 @@ html.dark{
 /* 向上滑动消退 */
 .fade-top-enter-active,
 .fade-top-leave-active {
-  transition:0.2s;
+  transition: 0.2s;
 }
 
 .fade-top-enter-from {
@@ -52,4 +57,15 @@ html.dark{
 .fade-slide-leave-to {
   opacity: 0;
   transform: translateX(30px);
+}
+
+.pointer {
+  --l: 15px;
+  --gradient-image: linear-gradient(45deg, #44c089, #e5b12d, #1D74C1, #a855f7);
+  border-image: var(--gradient-image) 1;
+  border-image-slice: 1;
+  border-style: solid;
+  -webkit-mask: conic-gradient(at var(--l) var(--l), transparent 75%, red 75%) 0 0 /calc(100% - var(--l)) calc(100% - var(--l));
+  mask: conic-gradient(at var(--l) var(--l), transparent 75%, red 75%) 0 0 /calc(100% - var(--l)) calc(100% - var(--l));
+  z-index: -1;
 }

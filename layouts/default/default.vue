@@ -1,4 +1,7 @@
 <script>
+import { setHtmlProperty } from '~/utils'
+
+setHtmlProperty('--el-color-primary', '#44c089')
 </script>
 
 <template>

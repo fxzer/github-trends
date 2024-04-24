@@ -8,7 +8,7 @@ export async function getRepos(lang: string, page: number) {
     headers.authorization = `token ${process.env.GITHUB_TRENDS_TOKEN}`
   try {
     const dt = await request(`GET /search/repositories`, {
-      ...{ headers },
+      headers,
       q: `stars:>2000 language:${lang}`,
       sort: 'stars',
       page,

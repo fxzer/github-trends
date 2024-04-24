@@ -1,7 +1,6 @@
 export const isDark = useDark()
 export const toggleDark = useToggle(isDark)
 
-// @ts-expect-error: Transition API
 const isAppearanceTransition = document.startViewTransition
   && !window.matchMedia('(prefers-reduced-motion: reduce)').matches
 
