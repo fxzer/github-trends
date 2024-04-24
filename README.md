@@ -8,13 +8,9 @@
 
 ## 效果展示
 ![trend](./public/imgs/trend-light-dark.png)
-
 ![repo](./public/imgs/repo-light-dark.png)
-
 ![user](./public/imgs/user-light-dark.png)
-
 ![chart](./public/imgs/chart-light-dark.png)
-
 ## 安装依赖
 
 ```bash
