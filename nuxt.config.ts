@@ -1,6 +1,4 @@
 import process from 'node:process'
-import { webUpdateNotice } from '@plugin-web-update-notification/vite'
-import { version } from './package.json'
 
 const isVercel = process.argv.includes('--vercel')
 export default defineNuxtConfig({
@@ -24,19 +22,6 @@ export default defineNuxtConfig({
       autoprefixer: {}, // 自动添加前缀
       cssnano: {},
     },
-  },
-  vite: {
-    plugins: [
-      webUpdateNotice({
-        hiddenDismissButton: true,
-        checkInterval: 2 * 60 * 1000,
-        notificationProps: {
-          title: '🎉 网站更新提示!',
-          description: `检测到新版本(${version}), 请刷新页面后使用！`,
-          buttonText: '刷新',
-        },
-      }),
-    ],
   },
   css: ['assets/styles/main.scss'],
   site: {

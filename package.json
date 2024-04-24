@@ -31,7 +31,6 @@
     "@nuxt-alt/proxy": "^2.5.8",
     "@nuxtjs/robots": "^3.0.0",
     "@nuxtjs/sitemap": "^5.1.4",
-    "@plugin-web-update-notification/vite": "^1.7.1",
     "@unocss/reset": "^0.59.4",
     "axios": "^1.6.8",
     "dayjs": "^1.11.10",
