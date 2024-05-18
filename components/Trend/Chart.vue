@@ -6,51 +6,16 @@ const props = defineProps<{
 }>()
 const { data } = toRefs(props)
 
-const series = [
-  {
-    name: 'stars',
-    type: 'bar',
-    stack: 'total',
-    // 颜色
-    itemStyle: {
-      color: '#9FE080',
-    },
-    label: {
-      show: true,
-    },
-    emphasis: {
-      focus: 'series',
-    },
-  },
-  {
-    name: 'forks',
-    type: 'bar',
-    stack: 'total',
-    label: {
-      show: true,
-    },
-    itemStyle: {
-      color: '#F9C858',
-    },
-    emphasis: {
-      focus: 'series',
-    },
-  },
-  {
-    name: 'starup',
-    type: 'bar',
-    stack: 'total',
-    itemStyle: {
-      color: '#EE6666',
-    },
-    label: {
-      show: true,
-    },
-    emphasis: {
-      focus: 'series',
-    },
-  },
-]
+const series = [{
+  name: 'stars',
+  color: 'rgb(159 ,224 ,128',
+}, {
+  name: 'forks',
+  color: 'rgb(249 ,200 ,88',
+}, {
+  name: 'starup',
+  color: 'rgb(238 ,102 ,102',
+}].map(seriesItem)
 const option = useChartOptions('仓库飙升榜', series)
 function handleData(data: Repo[]) {
   const dataCopy = deepClone(data)

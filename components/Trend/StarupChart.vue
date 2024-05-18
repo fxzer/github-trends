@@ -1,5 +1,4 @@
 <script setup lang='ts'>
-import * as echarts from 'echarts'
 import { deepClone, strToNumber } from '~/utils'
 
 const props = defineProps<{
@@ -11,13 +10,7 @@ const series = [
     name: 'starup',
     type: 'bar',
     showBackground: true,
-    itemStyle: {
-      color: new echarts.graphic.LinearGradient(0, 0, 1, 0, [
-        { offset: 0, color: '#83bff6' },
-        { offset: 0.5, color: '#188df0' },
-        { offset: 1, color: '#188df0' },
-      ]),
-    },
+    barWidth: 20,
     label: {
       color: '#fff',
       show: true,
@@ -33,13 +26,18 @@ const { domRef: chartRef } = useEcharts(option, useChartBehaver)
 function handleData(data: Repo[]) {
   const dataCopy = deepClone(data)
   dataCopy.sort((a: Repo, b: Repo) => strToNumber(a.starup) - strToNumber(b.starup))
-  const [starup, names] = dataCopy.reduce((prev: any, item: any) => {
-    prev[0].push(strToNumber(item.starup))
-    prev[1].push(`${item.owner}/${item.name}`)
-    return prev
-  }, [[], []])
+  const colors = ['rgb(159 ,224 ,128', 'rgb(249 ,200 ,88', 'rgb(238 ,102 ,102', 'rgb(129 ,140 ,248', 'rgba(156,107,211', 'rgba(248,195,248', 'rgba(100,255,249', 'rgba(244 ,114 ,182', 'rgba(255, 70 ,21', 'rgba(72 ,144 ,255']
+  const names: string[] = []
+  const seriesData = dataCopy.map((item: Repo, index: number) => {
+    names.push(`${item.owner}/${item.name}`)
+    return {
+      value: strToNumber(item.starup),
+      name: `${item.owner}/${item.name}`,
+      itemStyle: itemStyle(colors[index % colors.length]),
+    }
+  })
+  option.value.series[0].data = seriesData
   option.value.yAxis.data = names
-  option.value.series[0].data = starup
 }
 watch(data, () => {
   handleData(data.value)

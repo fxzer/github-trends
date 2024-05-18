@@ -14,11 +14,7 @@ const { onMouseEnter } = useMouseEnter()
 <template>
   <div>
     <FilterWrap>
-      <el-radio-group v-model="userRange">
-        <el-radio-button v-for="item in USER_RANGES" :key="item.value" :value="item.value">
-          {{ item.label }}
-        </el-radio-button>
-      </el-radio-group>
+      <RadioGroup v-model="userRange" :list="USER_RANGES" />
       <Views v-model="view" />
     </FilterWrap>
     <Transition name="fade-top" mode="out-in">

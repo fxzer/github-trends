@@ -13,10 +13,7 @@ export default defineNuxtConfig({
     '@vueuse/nuxt',
     'nuxt-icon',
     '@nuxtjs/sitemap',
-    '@element-plus/nuxt',
   ],
-  elementPlus: {
-  },
   postcss: {
     plugins: {
       autoprefixer: {}, // 自动添加前缀

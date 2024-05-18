@@ -2,8 +2,6 @@
 
 <template>
   <NuxtLayout>
-    <el-config-provider size="small">
       <NuxtPage />
-    </el-config-provider>
   </NuxtLayout>
 </template>

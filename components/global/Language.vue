@@ -10,11 +10,7 @@ const language = useVModel(props, 'modelValue', emit)
 </script>
 
 <template>
-  <el-radio-group v-model="language">
-    <el-radio-button v-for="item in LANGUAGE_LIST" :key="item" :value="item">
-      {{ item }}
-    </el-radio-button>
-  </el-radio-group>
+   <RadioGroup v-model="language" :list="LANGUAGE_LIST.map(n => ({label:n,value:n}))" />
 </template>
 
 <style scoped lang='scss'>

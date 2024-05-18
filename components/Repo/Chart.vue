@@ -3,51 +3,16 @@ const props = defineProps<{
   data: any[]
 }>()
 
-const series = [
-  {
-    name: 'stars',
-    type: 'bar',
-    stack: 'total',
-    // 颜色
-    itemStyle: {
-      color: '#9FE080',
-    },
-    label: {
-      show: true,
-    },
-    emphasis: {
-      focus: 'series',
-    },
-  },
-  {
-    name: 'forks',
-    type: 'bar',
-    stack: 'total',
-    label: {
-      show: true,
-    },
-    itemStyle: {
-      color: '#F9C858',
-    },
-    emphasis: {
-      focus: 'series',
-    },
-  },
-  {
-    name: 'watchers',
-    type: 'bar',
-    stack: 'total',
-    itemStyle: {
-      color: '#818cf8',
-    },
-    label: {
-      show: true,
-    },
-    emphasis: {
-      focus: 'series',
-    },
-  },
-]
+const series = [{
+  name: 'stars',
+  color: 'rgb(159 ,224 ,128',
+}, {
+  name: 'forks',
+  color: 'rgb(249 ,200 ,88',
+}, {
+  name: 'watchers',
+  color: 'rgb(129 ,140 ,248',
+}].map(seriesItem)
 const { data } = toRefs(props)
 
 const option = useChartOptions('仓库人气榜', series)

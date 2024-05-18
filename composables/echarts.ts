@@ -145,3 +145,33 @@ export function useEcharts(
     chart,
   }
 }
+export function itemStyle(color: string) {
+  return {
+    normal: {
+      barBorderRadius: 10,
+      color: new echarts.graphic.LinearGradient(
+        0,
+        0,
+        1,
+        0,
+        [
+          { offset: 0, color: `${color},0.5)` },
+          { offset: 0.2, color: `${color},0.3)` },
+          { offset: 1, color: `${color},0.1)` },
+        ],
+      ),
+    },
+  }
+}
+export function seriesItem({ name = '', color = '' }) {
+  return {
+    name,
+    type: 'bar',
+    stack: 'total',
+    barWidth: 20,
+    itemStyle: itemStyle(color),
+    emphasis: {
+      focus: 'series',
+    },
+  }
+}

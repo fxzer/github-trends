@@ -36,36 +36,6 @@ const { onMouseEnter } = useMouseEnter()
           <template #icons="{ repo }">
             <IconText title="starup" icon-name="ph:star-half-bold" :text="repo.starup" text-red-500 />
           </template>
-        <!-- <template #trendsvg="{ repo }">
-          <div hidden lg="block h-20 w-50">
-            <el-image
-              lazy
-              wh-full
-              :src="`https://starchart.cc${repo.path}.svg`"
-              :zoom-rate="1.2"
-              :max-scale="4"
-              :min-scale="0.5"
-              :preview-src-list="[`https://starchart.cc${repo.path}.svg`]"
-              :initial-index="40"
-              fit="cover"
-            />
-          </div>
-        </template> -->
-        <!-- <template #trendsvg="{ repo }">
-          <div hidden lg="block h-20 w-50">
-            <el-image
-              lazy
-              wh-full
-              :src="`https://api.star-history.com/svg?repos=${repo.owner}/${repo.name}}&type=Date`"
-              :zoom-rate="1.2"
-              :max-scale="4"
-              :min-scale="0.5"
-              :preview-src-list="[`https://api.star-history.com/svg?repos=${repo.owner}/${repo.name}}&type=Date`]"
-              :initial-index="40"
-              fit="cover"
-            />
-          </div>
-        </template> -->
         </RepoItem>
       </div>
       <TrendChart v-else-if="view === 'chart'" :data="currentData" />
