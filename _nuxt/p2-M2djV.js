@@ -1,0 +1,1 @@
+const l=[{label:"日榜",value:"daily"},{label:"周榜",value:"weekly"},{label:"月榜",value:"monthly"}],a=[{label:"全球",value:"Global"},{label:"中国",value:"China"}],e=["JavaScript","TypeScript","Vue"],t={JavaScript:"#e5b12d",TypeScript:"#1D74C1",Vue:"#44C089"};export{l as D,e as L,a as U,t as l};
