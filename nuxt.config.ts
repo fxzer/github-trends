@@ -22,7 +22,7 @@ export default defineNuxtConfig({
   },
   css: ['assets/styles/main.scss'],
   site: {
-    url: 'https://fxzer.gitee.io',
+    url: 'https://fxzer.github.io',
   },
   app: {
     baseURL: isVercel ? '/' : '/github-trends/', /* 根据环境决定路由前缀 */
@@ -49,7 +49,6 @@ export default defineNuxtConfig({
         {
           charset: 'utf-8',
         },
-        { name: 'theme-color', content: '#FCF2E2' }, // PWA移动浏览器顶部主题颜色
       ],
       link: [
         {

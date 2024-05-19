@@ -1,7 +1,7 @@
 import { effectScope, nextTick, onScopeDispose, ref, watch } from 'vue'
 import type { ComputedRef, Ref } from 'vue'
 import * as echarts from 'echarts/core'
-
+import { BarChart } from 'echarts/charts'
 import type {
   DatasetComponentOption,
   GridComponentOption,
@@ -11,7 +11,32 @@ import type {
   TooltipComponentOption,
 } from 'echarts/components'
 import { useElementSize } from '@vueuse/core'
+import {
+  DatasetComponent,
+  GridComponent,
+  LegendComponent,
+  TitleComponent,
+  TooltipComponent,
+  TransformComponent,
+} from 'echarts/components'
+// 标签自动布局、全局过渡动画等特性
+import { LabelLayout, UniversalTransition } from 'echarts/features'
+// 引入 Canvas 渲染器，注意引入 CanvasRenderer 或者 SVGRenderer 是必须的一步
+import { CanvasRenderer } from 'echarts/renderers'
 
+// 注册必须的组件
+echarts.use([
+  TitleComponent,
+  TooltipComponent,
+  GridComponent,
+  LegendComponent,
+  DatasetComponent,
+  TransformComponent,
+  BarChart,
+  LabelLayout,
+  UniversalTransition,
+  CanvasRenderer,
+])
 export type ECOption = echarts.ComposeOption<
   | TitleComponentOption
   | LegendComponentOption
@@ -48,10 +73,8 @@ export function useEcharts(
   }
 
   function update(updateOptions: ECOption) {
-    if (isRendered()) {
-      // chart?.clear()
-      chart!.setOption({ ...updateOptions, backgroundColor: 'transparent' })
-    }
+    if (isRendered())
+      chart!.setOption(updateOptions)
   }
 
   async function render() {
@@ -147,20 +170,18 @@ export function useEcharts(
 }
 export function itemStyle(color: string) {
   return {
-    normal: {
-      barBorderRadius: 10,
-      color: new echarts.graphic.LinearGradient(
-        0,
-        0,
-        1,
-        0,
-        [
-          { offset: 0, color: `${color},0.5)` },
-          { offset: 0.2, color: `${color},0.3)` },
-          { offset: 1, color: `${color},0.1)` },
-        ],
-      ),
-    },
+    borderRadius: 10,
+    color: new echarts.graphic.LinearGradient(
+      0,
+      0,
+      1,
+      0,
+      [
+        { offset: 0, color: `${color},0.5)` },
+        { offset: 0.2, color: `${color},0.3)` },
+        { offset: 1, color: `${color},0.1)` },
+      ],
+    ),
   }
 }
 export function seriesItem({ name = '', color = '' }) {

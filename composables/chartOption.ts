@@ -1,6 +1,7 @@
 export function useChartOptions(title: string, series: any[] = []) {
   const legendData = series.map(item => item.name)
   return ref<any>({
+    backgroundColor: 'transparent',
     title: {
       text: title,
       left: 'center',
