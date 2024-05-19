@@ -1,1 +1,0 @@
-import{n as s,B as c,C as o,o as r,c as a}from"./h6IQvE-S.js";const n={"rounded-full":"",wh:"13 md:15"},m=s({__name:"LazyImage",props:["src"],setup(e){return(i,l)=>{const t=c("lazy");return o((r(),a("img",n,null,512)),[[t,e.src]])}}});export{m as default};
