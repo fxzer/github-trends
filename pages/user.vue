@@ -18,7 +18,7 @@ const { onMouseEnter } = useMouseEnter()
       <Views v-model="view" />
     </FilterWrap>
     <Transition name="fade-top" mode="out-in">
-      <div v-if="view === 'list'" grid="~ md:cols-2 xl:cols-3 gap-2">
+      <div v-if="view === 'list'" grid="~ md:cols-2 xl:cols-3 gap-2" class="relative">
         <div class="pointer absolute left-0 top-0 border-2 op0 transition-all duration-300" />
         <User v-for="(user, index) in userList" :key="index" :user="user" :index="index" @mouseenter="onMouseEnter" />
       </div>

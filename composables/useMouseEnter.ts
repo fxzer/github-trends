@@ -3,9 +3,11 @@ export function useMouseEnter() {
   const gap = 4
   function onMouseEnter(e: MouseEvent) {
     const el = e.target as HTMLElement
-    const { x, y, width, height } = el.getBoundingClientRect()
+    const x = el.offsetLeft - gap
+    const y = el.offsetTop - gap
+    const { width, height } = el.getBoundingClientRect()
     const pointer = document.querySelector('.pointer') as HTMLElement
-    pointer.style.transform = `translate(${x - gap}px, ${y + scrollY.value - gap}px)`
+    pointer.style.transform = `translate(${x}px, ${y}px)`
     pointer.style.width = `${width + gap * 2}px`
     pointer.style.height = `${height + gap * 2}px`
     pointer.style.opacity = '1'

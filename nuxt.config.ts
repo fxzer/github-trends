@@ -16,8 +16,6 @@ export default defineNuxtConfig({
   ],
   postcss: {
     plugins: {
-      autoprefixer: {}, // 自动添加前缀
-      cssnano: {},
     },
   },
   css: ['assets/styles/main.scss'],

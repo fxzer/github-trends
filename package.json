@@ -52,7 +52,6 @@
     "@unocss/preset-rem-to-px": "^0.60.2",
     "@vueuse/core": "^10.9.0",
     "@vueuse/nuxt": "^10.9.0",
-    "autoprefixer": "^10.4.19",
     "bumpp": "^9.4.1",
     "cheerio": "1.0.0-rc.12",
     "cssnano": "^7.0.1",
