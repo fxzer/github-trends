@@ -11,6 +11,7 @@ export function useMouseEnter() {
     pointer.style.width = `${width + gap * 2}px`
     pointer.style.height = `${height + gap * 2}px`
     pointer.style.opacity = '1'
+    pointer.style.transition = 'all 0.3s  ease-in-out'
   }
   function onScroll() {
     scrollY.value = window.scrollY
