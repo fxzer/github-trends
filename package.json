@@ -7,7 +7,7 @@
     "node": "20.x"
   },
   "scripts": {
-    "dev": "nuxi dev",
+    "dev": "nuxi dev -o",
     "test": "vitest",
     "update:data": "esno ./scripts/index.ts",
     "send": "esno ./scripts/sendEmail.ts",
