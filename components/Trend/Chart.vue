@@ -1,11 +1,7 @@
 <script setup lang='ts'>
 import { deepClone, strToNumber } from '~/utils'
 
-const props = defineProps<{
-  data: any[]
-}>()
-const { data } = toRefs(props)
-
+const data = inject('data')
 const series = [{
   name: 'stars',
   color: 'rgb(159 ,224 ,128',

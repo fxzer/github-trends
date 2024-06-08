@@ -1,8 +1,5 @@
 <script setup lang='ts'>
-const props = defineProps<{
-  data: any[]
-}>()
-
+const data = inject('data')
 const series = [{
   name: 'stars',
   color: 'rgb(159 ,224 ,128',
@@ -10,7 +7,6 @@ const series = [{
   name: 'forks',
   color: 'rgb(249 ,200 ,88',
 }].map(seriesItem)
-const { data } = toRefs(props)
 
 const option = useChartOptions('仓库人气榜', series)
 const { domRef: chartRef } = useEcharts(option, useChartBehaver)

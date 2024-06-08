@@ -4,6 +4,7 @@ import dataMap from '~/data/users.js'
 
 const userRange = ref<UserRange>(USER_RANGES[0].value)
 const userList = ref<any[]>([])
+provide('data', userList)
 watch(userRange, () => {
   userList.value = dataMap[`${userRange.value}`]
 }, { immediate: true })
@@ -23,6 +24,7 @@ const { onMouseEnter } = useMouseEnter()
         <User v-for="(user, index) in userList" :key="index" :user="user" :index="index" @mouseenter="onMouseEnter" />
       </div>
       <UserChart v-else-if="view === 'chart'" :data="userList" />
+      <UserTable v-else-if="view === 'table'" />
     </Transition>
   </div>
 </template>

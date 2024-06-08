@@ -7,10 +7,10 @@ defineProps(['user', 'index'])
 <template>
   <div v-slidein="100" relative overflow-hidden rounded-md p2 flex="~ items-center" border="~ dark:gray-600/80 hover:primary">
     <OrderNum :index="index" />
-    <LazyImage :src="user.avatar_url" mr2 />
+    <LazyImage :src="user.avatar_url" mr2 wh="13 md:15" />
     <div min-w-0 space-y-1>
       <a :href="user.html_url" target="_blank" text-lg>
-        <span mr-2 font-semibold text="blue-500 hover:purple-500">{{ user.name }}</span>
+        <span mr-2 font-semibold text="blue-500 hover:purple-500" op85>{{ user.name }}</span>
         <span font-light text="slate-400 dark:slate-500/90"> {{ user.login }}</span>
       </a>
       <div flex gap-3>

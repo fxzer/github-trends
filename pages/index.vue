@@ -4,8 +4,12 @@ import dataMap from '~/data/trending.js'
 
 const dateRange = ref<DateRange>('daily')
 const language = ref<Language>('JavaScript')
+
 const currentData = ref<Repo[]>([])
 const view = ref<'list' | 'chart' | 'starup-chart'>('list')
+const color = computed(() => langColors[language.value])
+provide('color', color)
+provide('data', currentData)
 
 function sortByStarup(data: Repo[]) {
   return data.sort((a: Repo, b: Repo) => strToNumber(b.starup) - strToNumber(a.starup))
@@ -13,7 +17,6 @@ function sortByStarup(data: Repo[]) {
 watch([dateRange, language], () => {
   currentData.value = sortByStarup(dataMap[`${language.value}-${dateRange.value}`])
 }, { immediate: true })
-const { onMouseEnter } = useMouseEnter()
 </script>
 
 <template>
@@ -24,22 +27,13 @@ const { onMouseEnter } = useMouseEnter()
       <Views v-model="view" :show-starup="true" />
     </FilterWrap>
     <Transition name="fade-top" mode="out-in">
-      <div v-if="view === 'list'" grid="~ lg:cols-2 gap-2" class="relative">
-        <div class="pointer absolute left-0 top-0 border-2 op0 transition-all duration-300" />
-        <RepoItem v-for="(item, index) in currentData" :key="index" :index="index" :repo="item" @mouseenter="onMouseEnter">
-          <template #avatar="{ repo }">
-            <LazyImage :src="repo.avatar" wh="13 md:15" />
-          </template>
-          <template #title="{ repo }">
-            <RepoTitle :color="langColors[language]" :owner="repo.owner" :name="repo.name" />
-          </template>
-          <template #icons="{ repo }">
-            <IconText title="starup" icon-name="ph:star-half-bold" :text="repo.starup" text-red />
-          </template>
-        </RepoItem>
-      </div>
-      <TrendTable v-else-if="view === 'table'" :data="currentData" />
-      <TrendChart v-else-if="view === 'chart'" :data="currentData" />
+      <ViewList v-if="view === 'list'">
+        <template #icons="{ repo }">
+          <IconText title="starup" icon-name="ph:star-half-bold" :text="repo.starup" text-red />
+        </template>
+      </ViewList>
+      <Table v-else-if="view === 'table'" has-starup />
+      <TrendChart v-else-if="view === 'chart'" />
       <TrendStarupChart v-else :data="currentData" />
     </Transition>
   </div>
