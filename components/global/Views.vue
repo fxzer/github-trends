@@ -5,17 +5,23 @@ const props = defineProps<{
 }>()
 const emit = defineEmits(['update:modelValue'])
 const viewsMap = {
-  list: 'material-symbols-light:lists',
+  list: 'lucide:table',
+  table: 'lucide:sliders-horizontal',
   chart: 'lucide:bar-chart-horizontal',
 }
 const view = useVModel(props, 'modelValue', emit)
-const viewMapAll = computed(() => props.showStarup ? { ...viewsMap, 'starup-chart': 'mdi:chart-line' } : viewsMap)
+const viewMapAll = computed(() => props.showStarup ? { ...viewsMap, 'starup-chart': 'lucide:line-chart' } : viewsMap)
 </script>
 
 <template>
   <div flex cursor-pointer space-x-2 dark:text-zinc-300>
     <template v-for="(value, key) in viewMapAll" :key="key">
-      <Icon :name="value" scale-122 :class="view === key ? 'text-primary' : ''" @click="view = key" />
+      <Icon
+        :name="value" scale-125 :class=" {
+          'text-primary': view === key,
+          'lt-md:hidden': key === 'table',
+        } " @click="view = key"
+      />
     </template>
   </div>
 </template>

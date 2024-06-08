@@ -3,7 +3,7 @@ defineProps(['src'])
 </script>
 
 <template>
-  <img v-lazy="src" rounded-full wh="13 md:15">
+  <img v-lazy="src" border-1 rounded-full class="border-gray/40">
 </template>
 
 <style scoped lang='scss'>

@@ -28,16 +28,17 @@ const { onMouseEnter } = useMouseEnter()
         <div class="pointer absolute left-0 top-0 border-2 op0 transition-all duration-300" />
         <RepoItem v-for="(item, index) in currentData" :key="index" :index="index" :repo="item" @mouseenter="onMouseEnter">
           <template #avatar="{ repo }">
-            <LazyImage :src="repo.avatar" />
+            <LazyImage :src="repo.avatar" wh="13 md:15" />
           </template>
           <template #title="{ repo }">
             <RepoTitle :color="langColors[language]" :owner="repo.owner" :name="repo.name" />
           </template>
           <template #icons="{ repo }">
-            <IconText title="starup" icon-name="ph:star-half-bold" :text="repo.starup" text-red-500 />
+            <IconText title="starup" icon-name="ph:star-half-bold" :text="repo.starup" text-red />
           </template>
         </RepoItem>
       </div>
+      <TrendTable v-else-if="view === 'table'" :data="currentData" />
       <TrendChart v-else-if="view === 'chart'" :data="currentData" />
       <TrendStarupChart v-else :data="currentData" />
     </Transition>
