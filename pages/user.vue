@@ -1,28 +1,9 @@
 <script setup lang='ts'>
-import { USER_RANGES, type UserRange } from '../utils'
 import dataMap from '~/data/users.js'
 
 const { onMouseEnter } = useMouseEnter()
 
-function useMemory() {
-  const router = useRouter()
-  const userRange = ref<UserRange>(USER_RANGES[0].value)
-  const view = ref<View>('list')
-  const route = useRoute()
-
-  watch(() => route.query, (val) => {
-    const { u = 'Global', v = 'list' } = val
-    userRange.value = u as UserRange
-    view.value = v as View
-  }, { immediate: true })
-
-  watch([userRange, view], ([u, v]) => {
-    router.push({ query: { u, v } })
-  })
-  return { view, userRange }
-}
-
-const { userRange, view } = useMemory()
+const { userRange, view } = useMemoryRoute()
 const userList = computed(() => dataMap[`${userRange.value}`])
 provide('data', userList)
 </script>
