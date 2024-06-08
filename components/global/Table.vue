@@ -2,7 +2,7 @@
 const props = defineProps<{
   hasStarup?: boolean
 }>()
-const data = inject('data')
+const data = inject('data') as any
 
 const tableHead = computed(() => ({
   avatar: 'Avatar',
@@ -25,7 +25,7 @@ const tableData = computed(() => {
         {{ i ? i : '#' }}
       </div>
       <div>
-        <LazyImage v-if="i" :src="item.avatar" wh="10" />
+        <LazyImage v-if="i" :key="item.id" :src="item.avatar" wh="10" />
         <span v-else>{{ item.avatar }}</span>
       </div>
       <div col-span-4 clamp-2>

@@ -12,5 +12,3 @@ setHtmlProperty('--el-color-primary', '#44c089')
     </div>
   </div>
 </template>
-
-<style scoped lang="scss"></style>

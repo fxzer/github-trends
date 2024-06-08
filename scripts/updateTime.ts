@@ -1,8 +1,8 @@
+import { formatDate } from '../utils'
 import { saveData } from './saveData'
-import dayjs from '~/utils/day'
 
 export async function saveUpdateTime() {
-  const updateTime = dayjs().format('YYYY-MM-DD HH:mm:ss')
-  await saveData(`export const updateTime = '${updateTime}'`, `updateTime.js`)
+  const now = new Date()
+  await saveData(`export const updateTime = '${formatDate(now, 'YYYY-MM-DD HH:mm:ss')}'`, `updateTime.js`)
   console.log('===> 时间更新完成 <===')
 }

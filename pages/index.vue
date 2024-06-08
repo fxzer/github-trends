@@ -6,7 +6,7 @@ const dateRange = ref<DateRange>('daily')
 const language = ref<Language>('JavaScript')
 
 const currentData = ref<Repo[]>([])
-const view = ref<'list' | 'chart' | 'starup-chart'>('list')
+const view = ref<'list' | 'table' | 'chart' | 'starup-chart'>('list')
 const color = computed(() => langColors[language.value])
 provide('color', color)
 provide('data', currentData)

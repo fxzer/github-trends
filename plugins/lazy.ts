@@ -10,5 +10,9 @@ export default defineNuxtPlugin((nuxtApp) => {
         }
       })
     },
+    updated(el, binding) {
+      el.src = binding.value
+    },
+
   })
 })

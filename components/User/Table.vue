@@ -1,5 +1,5 @@
 <script setup lang='ts'>
-const data = inject('data')
+const data = inject('data') as any
 const tableHead = computed(() => ({
   avatar: 'Avatar',
   name: 'Name / Login',
@@ -15,12 +15,12 @@ const tableData = computed(() => {
 
 <template>
   <div class="divide-y-1 divide-gray/12 dark:text-white/90">
-    <div v-for="item, i in tableData" :key="i" v-slidein="100" class="grid grid-cols-20 items-center gap-x-4 hover:bg-gray/10" py-2>
+    <div v-for="item, i in tableData" :key="item.id" v-slidein="100" class="grid grid-cols-20 items-center gap-x-4 hover:bg-gray/10" py-2>
       <div pl1>
         {{ i ? i : '#' }}
       </div>
       <div>
-        <LazyImage v-if="i" :src="item.avatar_url" wh="10" />
+        <LazyImage v-if="i" :key="item.id" :src="item.avatar_url" wh="10" />
         <span v-else>{{ item.avatar }}</span>
       </div>
       <div col-span-5 clamp-2>

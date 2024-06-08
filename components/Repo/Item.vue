@@ -3,7 +3,7 @@ defineProps<{
   index: number
   repo: any
 }>()
-const color = inject('color')
+const color = inject('color') as string
 </script>
 
 <template>

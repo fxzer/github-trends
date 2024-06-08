@@ -19,7 +19,7 @@ watch([language], () => {
   })
 }, { immediate: true })
 
-const view = ref<'list' | 'chart'>('list')
+const view = ref<'list' | 'table' | 'chart'>('list')
 </script>
 
 <template>

@@ -33,13 +33,11 @@
     "@unocss/reset": "^0.60.4",
     "@vercel/analytics": "^1.3.1",
     "axios": "^1.7.2",
-    "dayjs": "^1.11.11",
     "echarts": "^5.5.0",
     "fs-extra": "^11.2.0",
     "nodemailer": "^6.9.13",
     "octokit": "^4.0.2",
-    "puppeteer": "^22.10.0",
-    "sass": "^1.77.4"
+    "puppeteer": "^22.10.0"
   },
   "devDependencies": {
     "@antfu/eslint-config": "^2.20.0",
