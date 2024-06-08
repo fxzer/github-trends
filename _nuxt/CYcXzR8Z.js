@@ -1,1 +1,0 @@
-function r(e){return Number(e.replace(",",""))}function n(e){return JSON.parse(JSON.stringify(e))}function o(e){return e<1024?`${e}KB`:e<1024*1024?`${(e/1024).toFixed(2)}MB`:`${(e/1024/1024).toFixed(2)}GB`}function u(e,t){document==null||document.documentElement.style.setProperty(e,t)}export{u as a,n as d,o as f,r as s};
