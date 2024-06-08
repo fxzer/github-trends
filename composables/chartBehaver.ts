@@ -3,7 +3,7 @@ export function useChartBehaver(chart: any, option: any) {
     const { value = '', componentType } = params
     if (componentType === 'yAxis') {
       // 判断 value 是否 有() ,有则表示是开发者，用正则占位符的形式，取括号内的login内容
-      const result = /\((.+?)\)/g.exec(value)
+      const result = /\((.+?)\)/.exec(value)
       const path = result ? result[1] : value
       window.open(`https://github.com/${path}`, '_blank')
     }

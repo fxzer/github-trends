@@ -5,8 +5,6 @@ const tableHead = computed(() => ({
   name: 'Name / Login',
   followers: 'Followers',
   public_repos: 'Public Repos',
-  company: 'Company',
-  location: 'Location',
   email: 'Email',
   blog: 'Blog',
 }))
@@ -45,7 +43,6 @@ const tableData = computed(() => {
         <a v-if="i" :href="item.blog" class="text-blue-500/80" target="_blank">{{ item.blog }}</a>
         <span v-else>{{ item.blog }} </span>
       </div>
-      <!-- <div  col-span-2> {{ dayjs(item.updated_at) }} </div> -->
     </div>
   </div>
 </template>
