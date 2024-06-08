@@ -19,16 +19,16 @@ const tableData = computed(() => {
 </script>
 
 <template>
-  <div class="divide-y-1 divide-gray/12 dark:text-white/90">
-    <div v-for="item, i in tableData" :key="i" v-slidein="100" class="grid grid-cols-20 items-center gap-x-4 hover:bg-gray/10" py-2>
+  <div class="text-gray divide-y-1 divide-gray/12">
+    <div v-for="item, i in tableData" :key="i" v-slidein="40" class="grid grid-cols-20 items-center gap-x-4 hover:bg-gray/10" py-1>
       <div pl1>
         {{ i ? i : '#' }}
       </div>
       <div>
-        <LazyImage v-if="i" :key="item.id" :src="item.avatar" wh="10" />
+        <LazyImage v-if="i" :key="item.id" :src="item.avatar" wh="8" />
         <span v-else>{{ item.avatar }}</span>
       </div>
-      <div col-span-4 clamp-2>
+      <div col-span-4 clamp-2 :class="i ? 'text-gray-600 dark:text-white/90' : ''">
         <RepoTitle v-if="i" color="" :owner="item.owner" :name="item.name" class="!text-sm" />
         <span v-else> {{ item.name }} </span>
       </div>

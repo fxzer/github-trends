@@ -24,7 +24,7 @@ export const USER_RANGES = [
   },
 ] as const
 export type UserRange = typeof USER_RANGES[number]['value']
-
+export type View = 'list' | 'table' | 'chart' | 'starup-chart'
 export type Language = typeof LANGUAGE_LIST[number]
 export const LANGUAGE_LIST = [
   'JavaScript',

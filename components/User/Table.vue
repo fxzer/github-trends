@@ -15,7 +15,7 @@ const tableData = computed(() => {
 
 <template>
   <div class="divide-y-1 divide-gray/12 dark:text-white/90">
-    <div v-for="item, i in tableData" :key="item.id" v-slidein="100" class="grid grid-cols-20 items-center gap-x-4 hover:bg-gray/10" py-2>
+    <div v-for="item, i in tableData" :key="item.id" v-slidein="100" class="grid grid-cols-20 items-center gap-x-4 hover:bg-gray/10" py-1>
       <div pl1>
         {{ i ? i : '#' }}
       </div>

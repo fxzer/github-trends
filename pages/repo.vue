@@ -1,25 +1,17 @@
 <script setup lang='ts'>
-import { type Language, langColors } from '~/utils'
-
 import dataMap from '~/data/repos.js'
 
-const repoList = ref<any[]>([])
+const { view, language, color } = useMemoryRoute()
+const repoList = computed(() => dataMap[`${language.value}`].map((item: any) => {
+  return {
+    ...item,
+    avatar: item.owner.avatar_url,
+    owner: item.owner.login,
+    name: item.name,
+  }
+}))
 provide('data', repoList)
-const language = ref<Language>('JavaScript')
-const color = computed(() => langColors[language.value])
 provide('color', color)
-watch([language], () => {
-  repoList.value = dataMap[`${language.value}`].map((item: any) => {
-    return {
-      ...item,
-      avatar: item.owner.avatar_url,
-      owner: item.owner.login,
-      name: item.name,
-    }
-  })
-}, { immediate: true })
-
-const view = ref<'list' | 'table' | 'chart'>('list')
 </script>
 
 <template>

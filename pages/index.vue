@@ -1,22 +1,15 @@
 <script setup lang='ts'>
-import { type DateRange, type Language, type Repo, langColors, strToNumber } from '../utils'
+import { type Repo, strToNumber } from '../utils'
 import dataMap from '~/data/trending.js'
 
-const dateRange = ref<DateRange>('daily')
-const language = ref<Language>('JavaScript')
-
-const currentData = ref<Repo[]>([])
-const view = ref<'list' | 'table' | 'chart' | 'starup-chart'>('list')
-const color = computed(() => langColors[language.value])
+const { view, dateRange, language, color } = useMemoryRoute()
+const currentData = computed<Repo[]>(() => sortByStarup(dataMap[`${language.value}-${dateRange.value}`]))
 provide('color', color)
 provide('data', currentData)
 
 function sortByStarup(data: Repo[]) {
   return data.sort((a: Repo, b: Repo) => strToNumber(b.starup) - strToNumber(a.starup))
 }
-watch([dateRange, language], () => {
-  currentData.value = sortByStarup(dataMap[`${language.value}-${dateRange.value}`])
-}, { immediate: true })
 </script>
 
 <template>
