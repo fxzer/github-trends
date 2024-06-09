@@ -2,12 +2,19 @@ import process from 'node:process'
 
 const isVercel = process.argv.includes('--vercel')
 const baseURL = isVercel ? '/' : '/github-trends/'
+const VITE_GITHUB_ACCESS_TOKEN = process.env.VITE_GITHUB_ACCESS_TOKEN
 export default defineNuxtConfig({
   experimental: {
     payloadExtraction: false,
   },
   devServer: {
     port: 8888,
+  },
+  runtimeConfig: {
+    // public中的键也可以在客户端使用
+    public: {
+      VITE_GITHUB_ACCESS_TOKEN,
+    },
   },
   modules: [
     '@unocss/nuxt',
