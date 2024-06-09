@@ -1,7 +1,7 @@
 import process from 'node:process'
 
 const isVercel = process.argv.includes('--vercel')
-const baseURL = isVercel ? '/' : '/github-trends-query/'
+const baseURL = isVercel ? '/' : '/github-trends/q/'
 export default defineNuxtConfig({
   experimental: {
     payloadExtraction: false,

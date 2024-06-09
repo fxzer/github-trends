@@ -31,6 +31,7 @@ jobs:
         run: |
           echo "USERNAME=${{ github.actor }}" >> $GITHUB_ENV
           echo "REPO_NAME=${{ github.repository }}" >> $GITHUB_ENV
+          echo "当前VITE_GITHUB_ACCESS_TOKEN： $VITE_GITHUB_ACCESS_TOKEN"
 
       - name: Checkout code
         uses: actions/checkout@v4

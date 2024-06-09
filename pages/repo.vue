@@ -49,6 +49,8 @@ const GQL = computed(() => `query {
 const loading = ref(false)
 async function query() {
   const accessToken = import.meta.env.VITE_GITHUB_ACCESS_TOKEN
+  // eslint-disable-next-line no-console
+  console.log('[ accessToken ]-52', accessToken)
   const headers = {
     'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/81.0.4044.113 Safari/537.36',
     'Accept': 'application/json',
