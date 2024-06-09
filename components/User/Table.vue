@@ -20,7 +20,7 @@ const tableData = computed(() => {
         {{ i ? i : '#' }}
       </div>
       <div>
-        <LazyImage v-if="i" :key="item.id" :src="item.avatar_url" wh="10" />
+        <LazyImage v-if="i" :key="item.id" :src="item.avatar_url" wh="8" />
         <span v-else>{{ item.avatar }}</span>
       </div>
       <div col-span-5 clamp-2>

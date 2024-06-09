@@ -22,7 +22,8 @@ export async function getRepos(lang: string, page: number) {
         avatar: repo.owner.avatar_url,
         owner: repo.owner.login,
         name: repo.name,
-        ourl: repo.owner.url,
+        url: repo.html_url,
+        ourl: repo.owner.html_url,
         openIssues: repo.open_issues,
       }))
     }
