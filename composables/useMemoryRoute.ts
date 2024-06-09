@@ -1,5 +1,6 @@
 import { type UserRange, langColors } from '~/utils'
 
+const { isMobile } = useMobile()
 export function useMemoryRoute() {
   const router = useRouter()
   const route = useRoute()
@@ -15,12 +16,8 @@ export function useMemoryRoute() {
     dateRange.value = d as DateRange
     language.value = l as Language
     userRange.value = u as UserRange
-    view.value = v as View
+    view.value = isMobile.value && v === 'table' ? 'list' : v as View
   }, { immediate: true })
-
-  // watch([language, view, dateRange, userRange], ([l, v, d, u]) => {
-  //   router.push({ query: { d, l, v, u } })
-  // })
 
   // 分开监听，避免无限循环
   watch(language, (l) => {
