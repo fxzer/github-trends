@@ -20,8 +20,8 @@ const color = inject('color') as string
         </p>
       </div>
       <div flex transform-origin-lc gap-6 text-zinc lt-md:scale-80>
-        <IconText title="star" icon-name="material-symbols:kid-star-outline-sharp" :text="repo.stars" />
-        <IconText title="fork" icon-name="charm:git-fork" :text="repo.forks" />
+        <IconText title="star" icon-name="material-symbols:kid-star-outline-sharp" :text="formatNumber(repo.stars)" />
+        <IconText title="fork" icon-name="charm:git-fork" :text="formatNumber(repo.forks)" />
         <slot :repo="repo" name="icons" />
       </div>
     </div>

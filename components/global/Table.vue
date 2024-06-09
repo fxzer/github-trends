@@ -16,12 +16,14 @@ const tableHead = computed(() => ({
 const tableData = computed(() => {
   return [tableHead.value, ...data.value]
 })
+
+const route = useRoute()
 </script>
 
 <template>
   <div class="text-gray divide-y-1 divide-gray/12">
-    <div v-for="item, i in tableData" :key="i" v-slidein="40" class="grid grid-cols-20 items-center gap-x-4 hover:bg-gray/10" py-1>
-      <div pl1>
+    <div v-for="item, i in tableData" :key="i" v-slidein="40" class="group grid grid-cols-20 items-center gap-x-4 hover:bg-gray/10" py-1>
+      <div pl1 op50 class="group-hover:op100">
         {{ i ? i : '#' }}
       </div>
       <div>
@@ -32,10 +34,16 @@ const tableData = computed(() => {
         <RepoTitle v-if="i" color="" :owner="item.owner" :name="item.name" class="!text-sm" />
         <span v-else> {{ item.name }} </span>
       </div>
-      <div>{{ item.stars }}</div>
-      <div>{{ item.forks }}</div>
-      <div v-if="hasStarup" text-red>
-        {{ item.starup }}
+      <div>
+        <div :class="i && route.path === '/repo' ? 'text-primary op90' : ''">
+          {{ formatNumber(item.stars) }}
+        </div>
+      </div>
+      <div>{{ formatNumber(item.forks) }}</div>
+      <div v-if="hasStarup">
+        <div v-if="i " :class="i ? 'text-red op90' : ''">
+          {{ formatNumber(item.starup) }}
+        </div>
       </div>
       <div v-else class="col-span-2">
         {{ i ? formatSize(item.size) : item.size }}

@@ -24,6 +24,14 @@ export function useChartOptions(title: string, series: any[] = []) {
       axisPointer: {
         type: 'shadow',
       },
+      formatter: (params) => {
+        const name = params[0].name
+        let result = `<b>${name}</b>`
+        params.forEach((item) => {
+          result += `<br />${item.marker} ${item.seriesName}: ${formatNumber(item.value)}`
+        })
+        return result
+      },
     },
     xAxis: {
       // 分隔线

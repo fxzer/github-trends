@@ -56,3 +56,19 @@ export function timeAgo(date: Date) {
     return `${seconds} 秒前`
   return '刚刚'
 }
+
+// 格式化 num 数量
+export function formatNumber(n: number) {
+  if (typeof n === 'string') {
+    if (Number.isNaN(Number.parseInt(n))) {
+      return n
+    }
+    else {
+      n = Number.parseInt(n.replace(',', ''))
+    }
+  }
+  if (n < 1000)
+    return n
+  else
+    return `${(n / 1000).toFixed(1)}k`
+}

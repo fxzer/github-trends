@@ -14,7 +14,7 @@ defineProps(['user', 'index'])
         <span font-light text="slate-400 dark:slate-500/90"> {{ user.login }}</span>
       </a>
       <div flex gap-3>
-        <IconText icon-name="ph:users-four" title="粉丝数量" :text="user.followers" text-pink-500 />
+        <IconText icon-name="ph:users-four" title="粉丝数量" :text="formatNumber(user.followers)" text-pink-500 />
         <IconText icon-name="teenyicons:git-outline" title="仓库数量" :text="user.public_repos" text-violet-500 />
         <IconText icon-name="ic:outline-update" title="最近更新" :text="timeAgo(new Date(user.updated_at))" text-green-500 />
       </div>

@@ -30,8 +30,8 @@ const tableData = computed(() => {
         </a>
         <span v-else> {{ item.name }} </span>
       </div>
-      <div col-span-2>
-        {{ item.followers }}
+      <div col-span-2 :class="i ? 'text-pink-500' : ''">
+        {{ formatNumber(item.followers) }}
       </div>
       <div col-span-2>
         {{ item.public_repos }}
