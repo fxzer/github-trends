@@ -19,6 +19,7 @@ function sortByStarup(data: Repo[]) {
       <Language v-model="language" />
       <Views v-model="view" :show-starup="true" />
     </FilterWrap>
+
     <Transition name="fade-top" mode="out-in">
       <ViewList v-if="view === 'list'">
         <template #icons="{ repo }">

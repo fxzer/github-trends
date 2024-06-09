@@ -22,7 +22,7 @@ const routes = [
           {{ item.text }}
         </NuxtLink>
       </nav>
-      <p absolute left-0 right-0 mx-auto whitespace-nowrap text="xs gray/80">
+      <p v-show="route.path === '/'" absolute left-0 right-0 mx-auto whitespace-nowrap text="xs gray/80">
         最近更新： {{ updateTime }}
       </p>
     </div>

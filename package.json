@@ -35,6 +35,7 @@
     "axios": "^1.7.2",
     "echarts": "^5.5.0",
     "fs-extra": "^11.2.0",
+    "graphql-tag": "^2.12.6",
     "nodemailer": "^6.9.13",
     "octokit": "^4.0.2",
     "puppeteer": "^22.10.0"
