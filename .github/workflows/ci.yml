@@ -14,6 +14,8 @@ env:
   WY_EMAIL: ${{ secrets.WY_EMAIL }}
   QQ_EMAIL_AUTH: ${{ secrets.QQ_EMAIL_AUTH }}
   ACCESS_TOKEN: ${{ secrets.DEPLOY_TOKEN }} # 用于部署到 Github Pages,取 Github 数据
+  VITE_GITHUB_ACCESS_TOKEN: ${{ secrets.VITE_GITHUB_ACCESS_TOKEN }} # 用于获取 Github 数据
+
 jobs:
   build-deploy:
     runs-on: ubuntu-latest

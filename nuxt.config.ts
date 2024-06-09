@@ -1,6 +1,7 @@
 import process from 'node:process'
 
 const isVercel = process.argv.includes('--vercel')
+const baseURL = isVercel ? '/' : '/github-trends-query/'
 export default defineNuxtConfig({
   experimental: {
     payloadExtraction: false,
@@ -23,7 +24,7 @@ export default defineNuxtConfig({
     url: 'https://fxzer.github.io',
   },
   app: {
-    baseURL: isVercel ? '/' : '/github-trends/', /* 根据环境决定路由前缀 */
+    baseURL, /* 根据环境决定路由前缀 */
     pageTransition: {
       name: 'fade-slide',
       mode: 'out-in',
@@ -52,17 +53,17 @@ export default defineNuxtConfig({
         {
           hid: 'icon',
           rel: 'icon',
-          href: '/github-trends/favicon.ico',
+          href: `${baseURL}favicon.ico`,
         },
         {
           hid: 'icon',
           rel: 'icon',
-          href: '/github-trends/favicon.svg',
+          href: `${baseURL}favicon.svg`,
         },
         {
           rel: 'apple-touch-icon',
           sizes: '180x180',
-          href: '/github-trends/favicon.svg',
+          href: `${baseURL}favicon.svg`,
         },
         // 网址规范化
         { rel: 'canonical', href: 'https://github-trends-neon.vercel.app' },
