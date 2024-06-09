@@ -64,7 +64,7 @@ export function formatNumber(n: number) {
       return n
     }
     else {
-      n = Number.parseInt(n.replace(',', ''))
+      n = strToNumber(n)
     }
   }
   if (n < 1000)

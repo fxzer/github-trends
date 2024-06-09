@@ -1,5 +1,5 @@
 <script setup lang='ts'>
-import { type Repo, strToNumber } from '../utils'
+import type { Repo } from '../utils'
 import dataMap from '~/data/trending.js'
 
 const { view, dateRange, language, color } = useMemoryRoute()
@@ -8,7 +8,7 @@ provide('color', color)
 provide('data', currentData)
 
 function sortByStarup(data: Repo[]) {
-  return data.sort((a: Repo, b: Repo) => strToNumber(b.starup) - strToNumber(a.starup))
+  return data.sort((a: Repo, b: Repo) => b.starup - a.starup)
 }
 </script>
 

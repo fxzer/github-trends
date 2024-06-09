@@ -1,5 +1,5 @@
 <script setup lang='ts'>
-import { deepClone, strToNumber } from '~/utils'
+import { deepClone } from '~/utils'
 
 const props = defineProps<{
   data: Repo[]
@@ -25,13 +25,25 @@ const option = useChartOptions('Star飙升榜', series)
 const { domRef: chartRef } = useEcharts(option, useChartBehaver)
 function handleData(data: Repo[]) {
   const dataCopy = deepClone(data)
-  dataCopy.sort((a: Repo, b: Repo) => strToNumber(a.starup) - strToNumber(b.starup))
-  const colors = ['rgb(159 ,224 ,128', 'rgb(249 ,200 ,88', 'rgb(238 ,102 ,102', 'rgb(129 ,140 ,248', 'rgba(156,107,211', 'rgba(248,195,248', 'rgba(100,255,249', 'rgba(244 ,114 ,182', 'rgba(255, 70 ,21', 'rgba(72 ,144 ,255']
+  dataCopy.sort((a: Repo, b: Repo) => a.starup - b.starup)
+
+  const colors = [
+    'rgb(159 ,224 ,128',
+    'rgb(249 ,200 ,88',
+    'rgb(238 ,102 ,102',
+    'rgb(129 ,140 ,248',
+    'rgba(156,107,211',
+    'rgba(248,195,248',
+    'rgba(100,255,249',
+    'rgba(244 ,114 ,182',
+    'rgba(255, 70 ,21',
+    'rgba(72 ,144 ,255',
+  ]
   const names: string[] = []
   const seriesData = dataCopy.map((item: Repo, index: number) => {
     names.push(`${item.owner}/${item.name}`)
     return {
-      value: strToNumber(item.starup),
+      value: item.starup,
       name: `${item.owner}/${item.name}`,
       itemStyle: itemStyle(colors[index % colors.length]),
     }

@@ -8,7 +8,7 @@ const pager = ref({
   hasNextPage: false,
 })
 const GQL = computed(() => `query {
-  search(query: "stars:>1000 language:${language.value}", type: REPOSITORY, first: 18, after: "${pager.value.endCursor}") {
+  search(query: "stars:>1000 language:${language.value}", type: REPOSITORY, first: 20, after: "${pager.value.endCursor}") {
     repositoryCount
     edges {
       node {
@@ -48,7 +48,7 @@ const GQL = computed(() => `query {
 
 const loading = ref(false)
 async function query() {
-  const accessToken = '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'
+  const accessToken = import.meta.env.VITE_GITHUB_ACCESS_TOKEN
   const headers = {
     'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/81.0.4044.113 Safari/537.36',
     'Accept': 'application/json',
@@ -81,6 +81,7 @@ async function query() {
         owner: item.node.owner.login,
         name: item.node.name,
         size: item.node.diskUsage,
+        full_name: item.node.nameWithOwner,
       }
     })
   }
@@ -108,7 +109,7 @@ provide('data', repoList)
 provide('color', color)
 
 const loadMoreRef = ref<HTMLElement | null>(null)
-useIntersectionObserver(loadMoreRef, async ([{ _, isIntersecting }]) => {
+useIntersectionObserver(loadMoreRef, async ([{ isIntersecting }]) => {
   isVisible.value = isIntersecting
 })
 </script>
@@ -127,7 +128,7 @@ useIntersectionObserver(loadMoreRef, async ([{ _, isIntersecting }]) => {
         </template>
       </ViewList>
       <Table v-else-if="view === 'table'" />
-      <RepoChart v-else-if="view === 'chart'" :data="repoList" />
+      <RepoChart v-else-if="view === 'chart' && repoList.length" />
     </Transition>
     <div v-show="loading" flex-center class="h-[calc(100vh-150px)]">
       <Icon name="svg-spinners:6-dots-scale" wh-8 class="text-gray" />
