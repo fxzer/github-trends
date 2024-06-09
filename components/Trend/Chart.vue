@@ -1,7 +1,7 @@
 <script setup lang='ts'>
 import { deepClone, strToNumber } from '~/utils'
 
-const data = inject('data')
+const data = inject('data') as any
 const series = [{
   name: 'stars',
   color: 'rgb(159 ,224 ,128',
@@ -12,7 +12,7 @@ const series = [{
   name: 'starup',
   color: 'rgb(238 ,102 ,102',
 }].map(seriesItem)
-const option = useChartOptions('仓库飙升榜', series)
+const option = useChartOptions('趋势仓库总指标排行榜', series)
 function handleData(data: Repo[]) {
   const dataCopy = deepClone(data)
   dataCopy.sort((a: Repo, b: Repo) => {

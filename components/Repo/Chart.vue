@@ -1,5 +1,5 @@
 <script setup lang='ts'>
-const data = inject('data')
+const data = inject('data') as any
 const series = [{
   name: 'stars',
   color: 'rgb(159 ,224 ,128',
