@@ -31,7 +31,7 @@ const route = useRoute()
         <span v-else>{{ item.avatar }}</span>
       </div>
       <div col-span-4 clamp-2 :class="i ? 'text-gray-600 dark:text-white/90' : ''">
-        <RepoTitle v-if="i" color="" :owner="item.owner" :name="item.name" class="!text-sm" />
+        <RepoTitle v-if="i" color="" :repo="item" class="!text-sm" />
         <span v-else> {{ item.name }} </span>
       </div>
       <div>

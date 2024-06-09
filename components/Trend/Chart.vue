@@ -1,5 +1,5 @@
 <script setup lang='ts'>
-import { deepClone, strToNumber } from '~/utils'
+import { deepClone } from '~/utils'
 
 const data = inject('data') as any
 const series = [{
@@ -16,14 +16,14 @@ const option = useChartOptions('趋势仓库总指标排行榜', series)
 function handleData(data: Repo[]) {
   const dataCopy = deepClone(data)
   dataCopy.sort((a: Repo, b: Repo) => {
-    const acount = strToNumber(a.starup) + strToNumber(a.stars) + strToNumber(a.forks)
-    const bcount = strToNumber(b.starup) + strToNumber(b.stars) + strToNumber(b.forks)
+    const acount = a.starup + a.stars + a.forks
+    const bcount = b.starup + b.stars + b.forks
     return acount - bcount
   })
   const [stars, forks, starup, names] = dataCopy.reduce((prev: any, item: any) => {
-    prev[0].push(strToNumber(item.stars))
-    prev[1].push(strToNumber(item.forks))
-    prev[2].push(strToNumber(item.starup))
+    prev[0].push(item.stars)
+    prev[1].push(item.forks)
+    prev[2].push(item.starup)
     prev[3].push(`${item.owner}/${item.name}`)
     return prev
   }, [[], [], [], []])

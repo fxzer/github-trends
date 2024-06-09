@@ -14,7 +14,7 @@ const color = inject('color') as string
     </div>
     <div min-w-0 flex-1>
       <div>
-        <RepoTitle :color="color" :owner="repo.owner" :name="repo.name" op85 />
+        <RepoTitle :color="color" :repo="repo" op85 />
         <p my-1 text="xs zinc" clamp="3 md:2" min-h-4>
           {{ repo.description }}
         </p>

@@ -2,14 +2,7 @@
 import dataMap from '~/data/repos.js'
 
 const { view, language, color } = useMemoryRoute()
-const repoList = computed(() => dataMap[`${language.value}`].map((item: any) => {
-  return {
-    ...item,
-    avatar: item.owner.avatar_url,
-    owner: item.owner.login,
-    name: item.name,
-  }
-}))
+const repoList = computed(() => dataMap[`${language.value}`])
 provide('data', repoList)
 provide('color', color)
 </script>

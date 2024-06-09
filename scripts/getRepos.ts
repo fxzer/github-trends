@@ -14,8 +14,18 @@ export async function getRepos(lang: string, page: number) {
       page,
       per_page: 100,
     })
-    if (dt && dt.data && dt.data.items)
-      return dt.data.items.map(repo => ({ ...repo, stars: repo.stargazers_count }))
+    if (dt && dt.data && dt.data.items) {
+      return dt.data.items.map(repo => ({
+        ...repo,
+        stars: repo.stargazers_count,
+        forks: repo.forks_count,
+        avatar: repo.owner.avatar_url,
+        owner: repo.owner.login,
+        name: repo.name,
+        ourl: repo.owner.url,
+        openIssues: repo.open_issues,
+      }))
+    }
   }
   catch (error) {
     if (error instanceof Error)

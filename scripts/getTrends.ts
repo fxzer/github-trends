@@ -1,7 +1,7 @@
 import axios from 'axios'
 import { load } from 'cheerio'
 import type { DateRange, Language } from '../utils'
-import { DATE_RANGE_LIST, LANGUAGE_LIST } from '../utils'
+import { DATE_RANGE_LIST, LANGUAGE_LIST, strToNumber } from '../utils'
 import { saveData } from './saveData'
 
 export async function getTrendData() {
@@ -30,19 +30,21 @@ function parseTrendsHtml(html: string) {
     const name = $(el).find('.h3.lh-condensed a').text().split('/')[1].trim()
     const avatar = $(el).find('.color-fg-muted a.d-inline-block img.avatar-user')[0]?.attribs?.src || ''
     const path = $(el).find('.h3 a').attr('href')
-    const link = path ? `https://github.com${path}` : ''
+    const ourl = path ? `https://github.com${owner}` : ''
+    const url = path ? `https://github.com${path}` : ''
     const description = $(el).find('p.col-9.color-fg-muted.my-1.pr-4').text().trim()
     const language = $(el).find('[itemprop=programmingLanguage]').text().trim() || ''
-    const stars = $(el).find('a[href*="stargazers"]').text().trim()
-    const forks = $(el).find('a[href*="forks"]').text().trim()
-    const starup = $(el).find('.float-sm-right').text().trim().split(' ')[0]
+    const stars = strToNumber($(el).find('a[href*="stargazers"]').text().trim())
+    const forks = strToNumber($(el).find('a[href*="forks"]').text().trim())
+    const starup = strToNumber($(el).find('.float-sm-right').text().trim().split(' ')[0])
     trends.push({
       title,
       owner,
       name,
       avatar,
       path,
-      link,
+      ourl,
+      url,
       description,
       language,
       stars,

@@ -46,12 +46,13 @@ export interface Repo {
   path: string
   owner: string
   name: string
-  link: string
+  ourl: string // owner  url
+  url: string // repo url
   description: string
   language: string
-  stars: string
-  forks: string
-  starup: string
+  stars: number
+  forks: number
+  starup: number
 }
 
 export const langColors = {
