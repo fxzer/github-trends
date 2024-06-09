@@ -4,14 +4,14 @@ export function useMemoryRoute() {
   const router = useRouter()
   const route = useRoute()
 
-  const view = ref<View>('list')
+  const view = ref<View>('table')
   const dateRange = ref<DateRange>('daily')
   const language = ref<Language>('JavaScript')
   const userRange = ref<UserRange>('Global')
   const color = computed(() => langColors[language.value])
 
   watch(() => route.query, (val) => {
-    const { d = 'daily', l = 'JavaScript', v = 'list', u = 'Global' } = val
+    const { d = 'daily', l = 'JavaScript', v = 'table', u = 'Global' } = val
     dateRange.value = d as DateRange
     language.value = l as Language
     userRange.value = u as UserRange

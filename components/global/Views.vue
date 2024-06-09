@@ -5,8 +5,8 @@ const props = defineProps<{
 }>()
 const emit = defineEmits(['update:modelValue'])
 const viewsMap = {
-  list: 'lucide:table',
   table: 'lucide:sliders-horizontal',
+  list: 'lucide:table',
   chart: 'lucide:bar-chart-horizontal',
 }
 const view = useVModel(props, 'modelValue', emit)
