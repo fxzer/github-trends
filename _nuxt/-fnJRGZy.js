@@ -1,0 +1,1 @@
+import{n as s,D as o,E as t,o as a,c}from"./JEnVZOfS.js";const n={"border-1":"","rounded-full":"",class:"border-gray/40"},d=s({__name:"LazyImage",props:["src"],setup(e){return(i,l)=>{const r=o("lazy");return t((a(),c("img",n,null,512)),[[r,e.src]])}}});export{d as default};
