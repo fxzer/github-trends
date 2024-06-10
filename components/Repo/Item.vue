@@ -7,7 +7,7 @@ const color = inject('color') as string
 </script>
 
 <template>
-  <div v-slidein="100" relative flex overflow-hidden rounded-md p="x-2 y-1" gap="2 md:4" border="~ gray/40 hover:primary">
+  <div v-slidein="100" relative flex overflow-hidden rounded-md p="x-2 y-1" gap="2 md:4" border="~ gray/30 hover:primary">
     <OrderNum :index="index" />
     <div flex-center>
       <LazyImage :src="repo.avatar" wh="13 md:15" />
@@ -19,7 +19,7 @@ const color = inject('color') as string
           {{ repo.description }}
         </p>
       </div>
-      <div flex transform-origin-lc gap-6 text-zinc lt-md:scale-80>
+      <div grid="~ cols-4 sm:cols-6" transform-origin-lc text-zinc lt-md:scale-80 lt-md:gap-3>
         <IconText title="star" icon-name="material-symbols:kid-star-outline-sharp" :text="formatNumber(repo.stars)" />
         <IconText title="fork" icon-name="charm:git-fork" :text="formatNumber(repo.forks)" />
         <slot :repo="repo" name="icons" />

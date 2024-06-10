@@ -8,7 +8,7 @@ defineProps<{
 </script>
 
 <template>
-  <div v-if="text" :title="title" flex-center gap-1>
+  <div v-if="text" :title="title" flex-start-center gap-1>
     <Icon :name="iconName" text-zinc /> <span>{{ text }}</span>
   </div>
 </template>
