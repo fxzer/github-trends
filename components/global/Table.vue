@@ -41,7 +41,7 @@ const route = useRoute()
       </div>
       <div>{{ formatNumber(item.forks) }}</div>
       <div v-if="hasStarup">
-        <div v-if="i " :class="i ? 'text-red op90' : ''">
+        <div :class="i ? 'text-red op90' : ''">
           {{ formatNumber(item.starup) }}
         </div>
       </div>
