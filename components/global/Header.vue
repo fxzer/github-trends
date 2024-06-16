@@ -29,10 +29,8 @@ const routes = [
 
     <div flex space-x-4>
       <span cursor-pointer @click="toggleDarkAnimate">
-        <ClientOnly>
-          <Icon v-if="!isDark" name="material-symbols:light-mode" color="#FCBE34" md:wh-6 scale-120 />
-          <Icon v-else name="solar:moon-sleep-bold" md:wh-6 />
-        </ClientOnly>
+        <Icon v-show="!isDark" name="material-symbols:light-mode" color="#FCBE34" md:wh-6 scale-120 />
+        <Icon v-show="isDark" name="solar:moon-sleep-bold" md:wh-6 />
       </span>
       <a rel="noreferrer" href="https://github.com/fxzer/github-trends" target="_blank" title="GitHub">
         <Icon name="simple-icons:github" md:wh-6 />
@@ -43,3 +41,6 @@ const routes = [
     </div>
   </header>
 </template>
+
+<style>
+</style>

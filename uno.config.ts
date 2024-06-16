@@ -27,7 +27,7 @@ export default defineConfig({
   ],
   theme: {
     colors: {
-      primary: 'var(--el-color-primary)',
+      primary: '#44c089',
     },
   },
   presets: [
