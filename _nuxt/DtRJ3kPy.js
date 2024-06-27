@@ -1,1 +1,0 @@
-import{_ as t,o as n,c as o,Q as c}from"./Y9I7vQRT.js";const r={},s={"gap-3":"","py-4":"",flex:"between-center wrap"};function _(e,a){return n(),o("div",s,[c(e.$slots,"default")])}const l=t(r,[["render",_]]);export{l as default};
