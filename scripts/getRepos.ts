@@ -40,7 +40,7 @@ export async function getReposData() {
   const allRepos: any = { }
   for (const lang of languages) {
     const langRepos = []
-    for (let i = 1; i <= 1; i++) {
+    for (let i = 1; i <= 2; i++) {
       const dt = await getRepos(lang, i)
       if (dt && dt.length)
         langRepos.push(...dt)
