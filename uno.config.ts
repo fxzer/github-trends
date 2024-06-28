@@ -11,6 +11,7 @@ export default defineConfig({
   shortcuts: [
     ['flex-center', 'flex justify-center items-center'],
     ['flex-x-center', 'flex justify-center'],
+    ['flex-y-center', 'flex items-center'],
     ['flex-start-center', 'flex justify-start items-center'],
     ['flex-between-center', 'flex justify-between items-center'],
     ['flex-around-center', 'flex justify-around items-center'],
@@ -30,6 +31,7 @@ export default defineConfig({
       primary: '#44c089',
     },
   },
+  safelist: ['text-lime', 'text-green'],
   presets: [
     presetUno(),
     presetAttributify(),

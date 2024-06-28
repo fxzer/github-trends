@@ -25,6 +25,7 @@ export async function getRepos(lang: string, page: number) {
         url: repo.html_url,
         ourl: repo.owner.html_url,
         openIssues: repo.open_issues,
+        updated_at: repo.updated_at,
       }))
     }
   }

@@ -68,3 +68,16 @@ export function formatNumber(n: number) {
   else
     return `${(n / 1000).toFixed(1)}k`
 }
+
+export function colorForUpdateAt(updateAt: string) {
+  const diff = new Date().getTime() - new Date(updateAt).getTime()
+  if (diff < 1000 * 60 * 60 * 24) {
+    return 'text-green'
+  }
+  else if (diff < 1000 * 60 * 60 * 24 * 7) {
+    return 'text-lime'
+  }
+  else {
+    return 'text-gray'
+  }
+}

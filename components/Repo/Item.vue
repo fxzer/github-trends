@@ -19,7 +19,7 @@ const color = inject('color') as string
           {{ repo.description }}
         </p>
       </div>
-      <div grid="~ cols-4 sm:cols-6" transform-origin-lc text-zinc lt-md:scale-80 lt-md:gap-3>
+      <div flex-y-center transform-origin-lc text-gray md:gap-4>
         <IconText title="star" icon-name="material-symbols:kid-star-outline-sharp" :text="formatNumber(repo.stars)" />
         <IconText title="fork" icon-name="charm:git-fork" :text="formatNumber(repo.forks)" />
         <slot :repo="repo" name="icons" />

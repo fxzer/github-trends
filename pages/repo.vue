@@ -17,6 +17,7 @@ provide('color', color)
       <ViewList v-if="view === 'list'">
         <template #icons="{ repo }">
           <IconText title="size" icon-name="fluent:table-resize-column-24-regular" :text="formatSize(repo.size)" />
+          <IconText title="size" icon-name="material-symbols:update-rounded" :text="timeAgo(new Date(repo.updated_at))" :class="colorForUpdateAt(repo.updated_at)" />
         </template>
       </ViewList>
       <Table v-else-if="view === 'table'" />
