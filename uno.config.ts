@@ -1,6 +1,7 @@
 import {
   defineConfig,
   presetAttributify,
+  presetIcons,
   presetUno,
   transformerDirectives,
   transformerVariantGroup,
@@ -34,6 +35,7 @@ export default defineConfig({
   safelist: ['text-lime', 'text-green'],
   presets: [
     presetUno(),
+    presetIcons(),
     presetAttributify(),
     presetRemToPx(),
   ],

@@ -16,8 +16,8 @@ provide('color', color)
     <Transition name="fade-top" mode="out-in">
       <ViewList v-if="view === 'list'">
         <template #icons="{ repo }">
-          <IconText title="size" icon-name="fluent:table-resize-column-24-regular" :text="formatSize(repo.size)" />
-          <IconText title="size" icon-name="material-symbols:update-rounded" :text="timeAgo(new Date(repo.updated_at))" :class="colorForUpdateAt(repo.updated_at)" />
+          <IconText title="size" icon="i-fluent:table-resize-column-24-regular" :text="formatSize(repo.size)" />
+          <IconText title="updated_at" icon="i-ic:outline-update" :text="timeAgo(new Date(repo.updated_at))" :class="colorForUpdateAt(repo.updated_at)" />
         </template>
       </ViewList>
       <Table v-else-if="view === 'table'" />

@@ -12,14 +12,14 @@ defineProps(['user', 'index'])
         <span font-light text="slate-400 dark:slate-500/90"> {{ user.login }}</span>
       </a>
       <div flex gap-3>
-        <IconText icon-name="ph:users-four" title="粉丝数量" :text="formatNumber(user.followers)" text-pink-500 />
-        <IconText icon-name="teenyicons:git-outline" title="仓库数量" :text="user.public_repos" text-violet-500 />
-        <IconText icon-name="ic:outline-update" title="最近更新" :text="timeAgo(new Date(user.updated_at))" :class="colorForUpdateAt(user.updated_at)" />
+        <IconText icon="i-ph:users-four" title="粉丝数量" :text="formatNumber(user.followers)" text-pink-500 />
+        <IconText icon="i-teenyicons:git-outline" title="仓库数量" :text="user.public_repos" text-violet-500 />
+        <IconText icon="i-material-symbols:more-time-rounded" title="最近更新" :text="timeAgo(new Date(user.updated_at))" :class="colorForUpdateAt(user.updated_at)" />
       </div>
       <div gap-3 text="slate-500 lt-md:xs" flex="~ wrap">
-        <IconText icon-name="ph:buildings-bold" title="公司" :text="user.company" />
-        <IconText icon-name="ph:map-pin-line-bold" title="位置" :text="user.location" />
-        <IconText icon-name="material-symbols:attach-email-outline" title="邮箱" :text="user.email" />
+        <IconText icon="i-ph:buildings-bold" title="公司" :text="user.company" />
+        <IconText icon="i-ph:map-pin-line-bold" title="位置" :text="user.location" />
+        <IconText icon="i-material-symbols:attach-email-outline" title="邮箱" :text="user.email" />
       </div>
       <p text="blue-600 hover:purple-500">
         <a :href="user.blog" target="_blank">{{ user.blog }}</a>

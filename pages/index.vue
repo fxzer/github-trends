@@ -22,7 +22,7 @@ function sortByStarup(data: Repo[]) {
     <Transition name="fade-top" mode="out-in">
       <ViewList v-if="view === 'list'">
         <template #icons="{ repo }">
-          <IconText title="starup" icon-name="ph:star-half-bold" :text="repo.starup" text-red />
+          <IconText title="starup" icon="i-ph:star-half-bold" :text="repo.starup" text-red />
         </template>
       </ViewList>
       <Table v-else-if="view === 'table'" has-starup />

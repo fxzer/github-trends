@@ -11,8 +11,8 @@ export default defineNuxtConfig({
   modules: [
     '@unocss/nuxt',
     '@vueuse/nuxt',
-    'nuxt-icon',
     '@nuxtjs/sitemap',
+    'unplugin-icons/nuxt',
   ],
   postcss: {
     plugins: {
