@@ -2,6 +2,24 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.1.0](https://gitee.com/fxzer/github-trends/compare/v2.0.0...v2.1.0) (2024-06-29)
+
+
+### Features
+
+* 仓库展示更新时间 ([c6dbb28](https://gitee.com/fxzer/github-trends/commit/c6dbb287a8d9b5a2af6f4c03376cba28e02efb65))
+* 请求数量(100 -> 200) ([72d7a7c](https://gitee.com/fxzer/github-trends/commit/72d7a7cd0ebebfe5d3512702b24794f496c9da51))
+
+
+### Bug Fixes
+
+* fix bug ([f1849f4](https://gitee.com/fxzer/github-trends/commit/f1849f4bdc2017a2bd416da9e947119a2e0f294d))
+* style bug ([8ad7dd1](https://gitee.com/fxzer/github-trends/commit/8ad7dd1e5ceab5e3111c972368dec3cf3da1f33b))
+* 修复加载样式空白问题 ([e3eaa41](https://gitee.com/fxzer/github-trends/commit/e3eaa41ccfc1bd4a1944684f3fb4bb41db670362))
+* 修复字段错误 ([634a25c](https://gitee.com/fxzer/github-trends/commit/634a25c6835fa5483019b883c3303dbe37feb0f5))
+* 修复移动端表格展示问题 ([c74ea10](https://gitee.com/fxzer/github-trends/commit/c74ea10534e3116ed684efda2d669c2215e8928a))
+* 表头显示问题 ([1b78854](https://gitee.com/fxzer/github-trends/commit/1b7885438c74d3ba83687cf0fad62c8a08129082))
+
 ## 1.3.0 (2024-06-09)
 
 
