@@ -32,7 +32,7 @@ export default defineConfig({
       primary: '#44c089',
     },
   },
-  safelist: ['text-lime', 'text-green'],
+  safelist: ['text-lime', 'text-green', 'op60'],
   presets: [
     presetUno(),
     presetIcons(),

@@ -72,10 +72,10 @@ export function formatNumber(n: number) {
 export function colorForUpdateAt(updateAt: string) {
   const diff = new Date().getTime() - new Date(updateAt).getTime()
   if (diff < 1000 * 60 * 60 * 24) {
-    return 'text-green'
+    return 'text-green op60'
   }
   else if (diff < 1000 * 60 * 60 * 24 * 7) {
-    return 'text-lime'
+    return 'text-lime op60'
   }
   else {
     return 'text-gray'
