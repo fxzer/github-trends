@@ -32,7 +32,7 @@ export default defineConfig({
       primary: '#44c089',
     },
   },
-  safelist: ['text-lime', 'text-green', 'op60'],
+  safelist: ['text-lime', 'text-green', 'op60', 'i-lucide:bar-chart-horizontal', 'i-lucide:table', 'i-lucide:sliders-horizontal', 'i-lucide:line-chart'],
   presets: [
     presetUno(),
     presetIcons(),
