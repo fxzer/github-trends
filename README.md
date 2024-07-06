@@ -8,9 +8,21 @@
 
 ## 效果展示
 ![trend](./public/imgs/trend-light-dark.png)
+---
 ![repo](./public/imgs/repo-light-dark.png)
+---
 ![user](./public/imgs/user-light-dark.png)
-![chart](./public/imgs/chart-light-dark.png)
+---
+<img  src="./public/imgs/table-light-dark.svg" alt="chart" height="100%" width="100%">
+
+---
+
+<img  src="./public/imgs/chart-light-dark.svg" alt="chart" height="100%" width="100%">
+
+---
+
+<img  src="./public/imgs/starup-chart-light-dark.svg" alt="chart" height="100%" width="100%">
+
 ## 安装依赖
 
 ```bash
