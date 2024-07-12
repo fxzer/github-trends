@@ -1,1 +1,0 @@
-import{n as a,o as s,c as n,a as t,B as o,t as l,C as r}from"./CurnLn7J.js";const i=["title"],_=a({__name:"IconText",props:{icon:{},text:{},title:{}},setup(c){return(e,p)=>e.text?(s(),n("div",{key:0,title:e.title,"flex-start-center":"","gap-1":"","lt-md:scale-80":""},[t("i",{class:o(e.icon),"text-gray":""},null,2),t("span",null,l(e.text),1)],8,i)):r("",!0)}});export{_};
