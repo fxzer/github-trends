@@ -1,1 +1,0 @@
-import{m as s,F as o,A as t,o as a,c}from"./CDB1SjQB.js";const n={"border-1":"","rounded-full":"",class:"border-gray/40"},m=s({__name:"LazyImage",props:["src"],setup(e){return(i,l)=>{const r=o("lazy");return t((a(),c("img",n,null,512)),[[r,e.src]])}}});export{m as default};
