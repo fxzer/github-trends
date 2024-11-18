@@ -1,0 +1,1 @@
+import{m as a,o as s,c as o,a as t,z as n,t as l,A as r}from"./B8IWFfbJ.js";const i=["title"],_=a({__name:"IconText",props:{icon:{},text:{},title:{}},setup(c){return(e,p)=>e.text?(s(),o("div",{key:0,title:e.title,"flex-start-center":"","gap-1":"","lt-md:scale-80":""},[t("i",{class:n(e.icon),"text-gray":""},null,2),t("span",null,l(e.text),1)],8,i)):r("",!0)}});export{_};
