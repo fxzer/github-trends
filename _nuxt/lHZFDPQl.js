@@ -1,1 +1,0 @@
-import{m as a,c as s,z as o,a as t,A as n,t as l,o as r}from"./B4YUwaeL.js";const i=["title"],_=a({__name:"IconText",props:{icon:{},text:{},title:{}},setup(c){return(e,p)=>e.text?(r(),s("div",{key:0,title:e.title,"flex-start-center":"","gap-1":"","lt-md:scale-80":""},[t("i",{class:n(e.icon),"text-gray":""},null,2),t("span",null,l(e.text),1)],8,i)):o("",!0)}});export{_};
