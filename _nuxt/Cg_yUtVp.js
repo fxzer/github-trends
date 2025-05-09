@@ -1,0 +1,1 @@
+import{g as a,c as s,q as o,a as t,r as n,t as r,o as l}from"./Dwkmyua-.js";const i=["title"],_=a({__name:"IconText",props:{icon:{},text:{},title:{}},setup(c){return(e,p)=>e.text?(l(),s("div",{key:0,title:e.title,"flex-start-center":"","gap-1":"","lt-md:scale-80":""},[t("i",{class:n(e.icon),"text-gray":""},null,2),t("span",null,r(e.text),1)],8,i)):o("",!0)}});export{_};
