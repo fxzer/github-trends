@@ -1,1 +1,0 @@
-import{g as s,y as o,x as t,c as a,o as c}from"./D8t2S-O_.js";const n={"border-1":"","rounded-full":"",class:"border-gray/40"},d=s({__name:"LazyImage",props:["src"],setup(e){return(i,l)=>{const r=t("lazy");return o((c(),a("img",n,null,512)),[[r,e.src]])}}});export{d as default};
