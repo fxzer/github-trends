@@ -1,4 +1,5 @@
-import { type UserRange, langColors } from '~/utils'
+import type { UserRange } from '~/utils'
+import { langColors } from '~/utils'
 
 export function useMemoryRoute() {
   const router = useRouter()

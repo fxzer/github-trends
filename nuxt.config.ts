@@ -5,6 +5,11 @@ export default defineNuxtConfig({
   experimental: {
     payloadExtraction: false,
   },
+  imports: {
+    dirs: [
+      'utils/**',
+    ],
+  },
   devServer: {
     port: 8888,
   },

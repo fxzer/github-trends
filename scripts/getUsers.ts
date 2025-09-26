@@ -1,6 +1,6 @@
-import { USER_RANGES } from '../utils'
-import { saveData } from './saveData'
+import { USER_RANGES } from '../utils/index'
 import { orequest } from './octokit'
+import { saveData } from './saveData'
 
 export async function getUserInfo(username: string) {
   return await orequest(`GET /users/${username}`)

@@ -1,6 +1,6 @@
+import type { DateRange, Language } from '../utils'
 import axios from 'axios'
 import { load } from 'cheerio'
-import type { DateRange, Language } from '../utils'
 import { DATE_RANGE_LIST, LANGUAGE_LIST, strToNumber } from '../utils'
 import { saveData } from './saveData'
 

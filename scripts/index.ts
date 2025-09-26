@@ -1,8 +1,8 @@
-import { saveUpdateTime } from './updateTime'
-import { getRateLimit } from './rateLimit'
 import { getReposData } from './getRepos'
-import { getUsersData } from './getUsers'
 import { getTrendData } from './getTrends'
+import { getUsersData } from './getUsers'
+import { getRateLimit } from './rateLimit'
+import { saveUpdateTime } from './updateTime'
 
 await saveUpdateTime()
 await getRateLimit()

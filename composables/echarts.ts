@@ -1,7 +1,3 @@
-import { effectScope, nextTick, onScopeDispose, ref, watch } from 'vue'
-import type { ComputedRef, Ref } from 'vue'
-import * as echarts from 'echarts/core'
-import { BarChart } from 'echarts/charts'
 import type {
   DatasetComponentOption,
   GridComponentOption,
@@ -10,7 +6,9 @@ import type {
   ToolboxComponentOption,
   TooltipComponentOption,
 } from 'echarts/components'
+import type { ComputedRef, Ref } from 'vue'
 import { useElementSize } from '@vueuse/core'
+import { BarChart } from 'echarts/charts'
 import {
   DatasetComponent,
   GridComponent,
@@ -19,10 +17,12 @@ import {
   TooltipComponent,
   TransformComponent,
 } from 'echarts/components'
+import * as echarts from 'echarts/core'
 // 标签自动布局、全局过渡动画等特性
 import { LabelLayout, UniversalTransition } from 'echarts/features'
 // 引入 Canvas 渲染器，注意引入 CanvasRenderer 或者 SVGRenderer 是必须的一步
 import { CanvasRenderer } from 'echarts/renderers'
+import { effectScope, nextTick, onScopeDispose, ref, watch } from 'vue'
 
 // 注册必须的组件
 echarts.use([

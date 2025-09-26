@@ -1,6 +1,6 @@
 import process from 'node:process'
-import nodemailer from 'nodemailer'
 import fs from 'fs-extra'
+import nodemailer from 'nodemailer'
 
 const { QQ_EMAIL, WY_EMAIL, QQ_EMAIL_AUTH } = process.env
 console.log('[ QQ_EMAIL, WY_EMAIL, QQ_EMAIL_AUTH ]-5', QQ_EMAIL, WY_EMAIL, QQ_EMAIL_AUTH)

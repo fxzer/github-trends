@@ -1,3 +1,4 @@
+import presetRemToPx from '@unocss/preset-rem-to-px'
 import {
   defineConfig,
   presetAttributify,
@@ -6,7 +7,6 @@ import {
   transformerDirectives,
   transformerVariantGroup,
 } from 'unocss'
-import presetRemToPx from '@unocss/preset-rem-to-px'
 
 export default defineConfig({
   shortcuts: [
