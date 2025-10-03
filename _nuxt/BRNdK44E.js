@@ -1,1 +1,0 @@
-import o from"./bHfm30sR.js";import{_ as r,c as a,o as s,b as c,a as n,L as l}from"#entry";import"./r0zjfjId.js";const _={},d={w:"lg:250 xl:300","mx-auto":"","min-h-screen":"","pb-10":"","text-sm":"","backdrop-blur-3xl":"","lt-lg:px-4":""};function m(e,f){const t=o;return s(),a("div",d,[c(t),n("div",null,[l(e.$slots,"default")])])}const x=r(_,[["render",m]]);export{x as default};
