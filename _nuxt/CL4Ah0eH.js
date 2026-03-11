@@ -1,0 +1,1 @@
+import{g as s,y as r,c as t,x as c,o}from"./CTC-BvkV.js";const n={"border-1":"","rounded-full":"",class:"border-gray/40"},i=s({__name:"LazyImage",props:["src"],setup(e){return(l,_)=>{const a=c("lazy");return r((o(),t("img",n,null,512)),[[a,e.src]])}}}),d=Object.assign(i,{__name:"LazyImage"});export{d as default};
