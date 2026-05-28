@@ -45,7 +45,7 @@ jobs:
           cache: 'pnpm'
 
       - name: Install deps
-        run: pnpm install
+        run: pnpm install --no-frozen-lockfile
 
       - name: Install ni
         run: pnpm i -g @antfu/ni
@@ -93,3 +93,4 @@ jobs:
       # - name: Send Email
       #   run: |
       #     nr send
+
