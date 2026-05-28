@@ -47,21 +47,13 @@ jobs:
       - name: Install deps
         run: pnpm install --no-frozen-lockfile
 
-      - name: Install ni
-        run: pnpm i -g @antfu/ni
-
       - name: Update Github Data
         run: |
-          export PNPM_HOME="$HOME/.local/share/pnpm"
-          export PATH="$PNPM_HOME/bin:$PATH"
-          nr update:data
+          pnpm run update:data
           git status
 
       - name: Generate
-        run: |
-          export PNPM_HOME="$HOME/.local/share/pnpm"
-          export PATH="$PNPM_HOME/bin:$PATH"
-          nr generate
+        run: pnpm run generate
 
       - name: Deploy to github-pages
         uses: peaceiris/actions-gh-pages@v4
