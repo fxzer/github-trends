@@ -45,7 +45,7 @@ jobs:
           cache: 'pnpm'
 
       - name: Install deps
-        run: pnpm install --no-frozen-lockfile
+        run: pnpm install --no-frozen-lockfile --allow-scripts
 
       - name: Install ni
         run: pnpm i -g @antfu/ni
