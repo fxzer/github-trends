@@ -48,19 +48,19 @@ jobs:
         run: pnpm install --no-frozen-lockfile
 
       - name: Install ni
-        run: |
-          pnpm setup
-          export PNPM_HOME="$HOME/.local/share/pnpm"
-          export PATH="$PNPM_HOME:$PATH"
-          pnpm i -g @antfu/ni
+        run: pnpm i -g @antfu/ni
 
       - name: Update Github Data
         run: |
+          export PNPM_HOME="$HOME/.local/share/pnpm"
+          export PATH="$PNPM_HOME/bin:$PATH"
           nr update:data
           git status
 
       - name: Generate
         run: |
+          export PNPM_HOME="$HOME/.local/share/pnpm"
+          export PATH="$PNPM_HOME/bin:$PATH"
           nr generate
 
       - name: Deploy to github-pages
