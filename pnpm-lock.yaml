@@ -1,0 +1,118 @@
+lockfileVersion: '9.0'
+
+settings:
+  autoInstallPeers: true
+  excludeLinksFromLockfile: false
+
+importers:
+  .:
+    dependencies:
+      '@nuxt-alt/proxy':
+        specifier: ^2.5.8
+        version: 2.5.8(vue@3.5.12)
+      '@nuxtjs/robots':
+        specifier: ^5.5.5
+        version: 5.5.5(nuxt@4.1.2)
+      '@nuxtjs/sitemap':
+        specifier: ^7.4.7
+        version: 7.4.7(nuxt@4.1.2)
+      '@unocss/reset':
+        specifier: ^66.5.2
+        version: 66.5.2
+      axios:
+        specifier: ^1.12.2
+        version: 1.12.2
+      echarts:
+        specifier: ^6.0.0
+        version: 6.2.5
+      fs-extra:
+        specifier: ^11.3.2
+        version: 11.3.2
+      nodemailer:
+        specifier: ^7.0.6
+        version: 7.0.6
+      octokit:
+        specifier: ^5.0.3
+        version: 5.0.3
+      puppeteer:
+        specifier: ^24.22.3
+        version: 24.22.3
+      unplugin-icons:
+        specifier: ^22.3.0
+        version: 22.3.0(vue@3.5.12)
+    devDependencies:
+      '@antfu/eslint-config':
+        specifier: ^5.4.1
+        version: 5.4.1(eslint@9.12.0)(typescript@5.6.3)
+      '@nuxt/devtools':
+        specifier: ^2.6.5
+        version: 2.6.5(nuxt@4.1.2)
+      '@types/fs-extra':
+        specifier: ^11.0.4
+        version: 11.0.4
+      '@types/node':
+        specifier: ^24.5.2
+        version: 24.5.2
+      '@types/nodemailer':
+        specifier: ^7.0.1
+        version: 7.0.1
+      '@unocss/eslint-config':
+        specifier: ^66.5.2
+        version: 66.5.2(eslint@9.12.0)
+      '@unocss/nuxt':
+        specifier: ^66.5.2
+        version: 66.5.2(nuxt@4.1.2)(vue@3.5.12)
+      '@unocss/preset-rem-to-px':
+        specifier: ^66.5.2
+        version: 66.5.2
+      '@vueuse/core':
+        specifier: ^13.9.0
+        version: 13.9.0(vue@3.5.12)
+      '@vueuse/nuxt':
+        specifier: ^13.9.0
+        version: 13.9.0(nuxt@4.1.2)(vue@3.5.12)
+      bumpp:
+        specifier: ^10.2.3
+        version: 10.2.3
+      cheerio:
+        specifier: 1.0.0-rc.12
+        version: 1.0.0-rc.12
+      cssnano:
+        specifier: ^7.1.1
+        version: 7.1.1(postcss@8.5.6)
+      esno:
+        specifier: ^4.8.0
+        version: 4.8.0
+      execa:
+        specifier: ^9.6.0
+        version: 9.6.0
+      lint-staged:
+        specifier: ^16.2.1
+        version: 16.2.1
+      node-fetch:
+        specifier: ^3.3.2
+        version: 3.3.2
+      nuxt:
+        specifier: ^4.1.2
+        version: 4.1.2(magicast@0.3.5)(rollup@4.29.4)(typescript@5.6.3)(vue@3.5.12)
+      postcss:
+        specifier: ^8.5.6
+        version: 8.5.6
+      rimraf:
+        specifier: ^6.0.1
+        version: 6.0.1
+      sass:
+        specifier: ^1.93.2
+        version: 1.93.2
+      simple-git-hooks:
+        specifier: ^2.13.1
+        version: 2.13.1
+      standard-version:
+        specifier: ^9.5.0
+        version: 9.5.0
+      unplugin-auto-import:
+        specifier: ^20.2.0
+        version: 20.2.0(rollup@4.29.4)
+      unplugin-vue-components:
+        specifier: ^29.1.0
+        version: 29.1.0(rollup@4.29.4)(vue@3.5.12)
