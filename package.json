@@ -30,6 +30,7 @@
     "@nuxt-alt/proxy": "^2.5.8",
     "@nuxtjs/robots": "^5.5.5",
     "@nuxtjs/sitemap": "^7.4.7",
+    "@octokit/request": "^8.0.0",
     "@unocss/reset": "^66.5.2",
     "axios": "^1.12.2",
     "echarts": "^6.0.0",
