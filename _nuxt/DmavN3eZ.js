@@ -1,0 +1,1 @@
+import{_ as t,f as n,L as r,D as o}from"./UNqg0sNI.js";const s={},_={"gap-3":"","py-4":"",flex:"between-center wrap"};function a(e,c){return o(),n("div",_,[r(e.$slots,"default")])}const l=Object.assign(t(s,[["render",a]]),{__name:"FilterWrap"});export{l as default};
